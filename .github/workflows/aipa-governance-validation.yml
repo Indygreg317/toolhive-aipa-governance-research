@@ -1,0 +1,40 @@
+name: AIPA Governance Validation
+
+on:
+  pull_request:
+    paths:
+      - "docs/aipa-governance/**"
+      - "schemas/aipa-governance/**"
+      - "examples/aipa-governance/**"
+      - "validator/aipa-governance/**"
+      - ".github/workflows/aipa-governance-validation.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/aipa-governance/**"
+      - "schemas/aipa-governance/**"
+      - "examples/aipa-governance/**"
+      - "validator/aipa-governance/**"
+      - ".github/workflows/aipa-governance-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-aipa-governance:
+    name: Validate AIPA governance examples
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run AIPA governance demo validation
+        run: python validator/aipa-governance/run_demo_validation.py
