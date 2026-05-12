@@ -1,0 +1,34 @@
+{
+  "governance_record_id": "govrec-2026-05-12-001",
+  "artifact_type": "governance_record",
+  "created_at": "2026-05-12T15:31:00Z",
+  "related_kb_id": "aipa-kb-mcp-filesystem-001",
+  "related_receipt_id": "receipt-2026-05-12-001",
+  "mcp_server_id": "mcp-filesystem-local",
+  "tool_name": "filesystem.write_file",
+  "governance_claims": {
+    "policy_was_referenced": true,
+    "identity_context_was_declared": true,
+    "human_oversight_was_required": true,
+    "human_oversight_was_recorded": true,
+    "execution_boundary_was_declared": true
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_fingerprint": "sha256:placeholder-filesystem-policy-fingerprint"
+  },
+  "verification_boundary": {
+    "boundary_id": "vb-filesystem-001",
+    "verification_status": "PASS",
+    "notes": "MVP example indicates required fields were present. This does not represent external attestation."
+  },
+  "audit_package_summary": {
+    "included_artifacts": [
+      "mcp_governance_knowledge_block",
+      "execution_receipt",
+      "governance_record"
+    ],
+    "missing_artifacts": [],
+    "review_status": "ready_for_demo_review"
+  }
+}

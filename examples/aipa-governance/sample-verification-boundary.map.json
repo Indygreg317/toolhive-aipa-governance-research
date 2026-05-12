@@ -1,0 +1,29 @@
+{
+  "boundary_id": "vb-filesystem-001",
+  "artifact_type": "verification_boundary_map",
+  "governed_artifact_id": "aipa-kb-mcp-filesystem-001",
+  "verifier_scope": "Check that required governance fields, policy fingerprint, evidence references, and oversight declarations are present for the governed MCP tool use.",
+  "evidence_inputs": [
+    "mcp_governance_knowledge_block",
+    "execution_receipt",
+    "governance_record",
+    "human_review_record_when_required"
+  ],
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_fingerprint": "sha256:placeholder-filesystem-policy-fingerprint"
+  },
+  "identity_context": {
+    "agent_id": "agent-dev-assistant-001",
+    "authority_scope": "approved_project_workspace_only"
+  },
+  "continuity_assumptions": [
+    "The policy fingerprint referenced in the Knowledge Block and execution receipt refers to the same policy version.",
+    "The agent identity declared in the receipt matches the governed execution context."
+  ],
+  "verification_outcomes": {
+    "PASS": "Required evidence is present and aligns with the declared governance boundary.",
+    "FAIL": "Required evidence is missing, inconsistent, or violates the declared governance boundary.",
+    "UNSUPPORTED": "The requested verification condition is outside the current MVP validator scope."
+  }
+}
