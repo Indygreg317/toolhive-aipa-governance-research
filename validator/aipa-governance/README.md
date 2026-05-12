@@ -2,7 +2,7 @@
 
 This directory contains a minimal validator for the AIPA MCP governance research overlay.
 
-The validator is intentionally small. It checks whether example governance artifacts contain the required MVP fields and whether their validation status uses the expected AIPA outcomes.
+The validator checks whether example governance artifacts contain the required MVP fields and whether their validation status uses the expected AIPA outcomes. It also supports basic scenario-folder validation for end-to-end demo packages.
 
 ## Outcomes
 
@@ -45,6 +45,25 @@ FAIL
 UNSUPPORTED
 ```
 
+For scenario folders, the validator checks that the folder contains:
+
+- request.json
+- decision-context.json
+- execution-receipt.json
+- governance-record.json
+- verification-boundary.map.json
+- audit-package-summary.json
+
+It also performs basic consistency checks:
+
+- request IDs match across request, decision context, and governance record
+- agent IDs remain consistent across scenario artifacts
+- policy fingerprints remain consistent across scenario artifacts
+- audit package tool identity matches the execution receipt
+- high-risk or write operations include human oversight
+- verification boundary maps include evidence inputs
+- audit package expected reviewer outcome is PASS, FAIL, or UNSUPPORTED
+
 ## Run the validator directly
 
 From the repository root:
@@ -55,6 +74,15 @@ python validator/aipa-governance/validate_governance_blocks.py \
   examples/aipa-governance/browser-search-governance.kb.json \
   examples/aipa-governance/database-governance.kb.json \
   examples/aipa-governance/sample-execution-receipt.json
+```
+
+## Validate a scenario folder
+
+From the repository root:
+
+```bash
+python validator/aipa-governance/validate_governance_blocks.py \
+  examples/aipa-governance/scenarios/filesystem-write-review
 ```
 
 ## Run the demo validation set
@@ -71,6 +99,8 @@ The runner uses:
 examples/aipa-governance/validation-manifest.json
 ```
 
+It also validates the filesystem write review scenario folder.
+
 ## MVP limitation
 
-This validator does not perform runtime enforcement, cryptographic verification, external attestation, or live MCP integration. It only validates the shape and required governance fields of the MVP example artifacts.
+This validator does not perform runtime enforcement, cryptographic verification, external attestation, or live MCP integration. It only validates the shape, required governance fields, and basic internal consistency of the MVP example artifacts and scenario packages.
