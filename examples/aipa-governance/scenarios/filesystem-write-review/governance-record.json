@@ -1,0 +1,36 @@
+{
+  "governance_record_id": "govrec-fs-write-001",
+  "artifact_type": "governance_record",
+  "created_at": "2026-05-12T16:00:30Z",
+  "related_request_id": "req-fs-write-001",
+  "related_decision_context_id": "decision-fs-write-001",
+  "related_kb_id": "aipa-kb-mcp-filesystem-001",
+  "related_receipt_id": "receipt-fs-write-001",
+  "mcp_server_id": "mcp-filesystem-local",
+  "tool_name": "filesystem.write_file",
+  "governance_claims": {
+    "policy_was_referenced": true,
+    "policy_fingerprint_was_declared": true,
+    "identity_context_was_declared": true,
+    "human_oversight_was_required": true,
+    "human_oversight_was_recorded": true,
+    "execution_boundary_was_declared": true,
+    "evidence_was_recorded": true
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_fingerprint": "sha256:placeholder-filesystem-policy-fingerprint"
+  },
+  "identity_context": {
+    "agent_id": "agent-dev-assistant-001",
+    "user_role": "developer",
+    "authority_scope": "approved_project_workspace_only"
+  },
+  "oversight_record": {
+    "required": true,
+    "reviewer_id": "human-reviewer-placeholder",
+    "review_status": "approved",
+    "review_reason": "Filesystem write operation required human approval under the MVP governance policy."
+  },
+  "review_summary": "The governance record declares that the filesystem write was policy-referenced, path-bounded, human-reviewed, and linked to an execution receipt."
+}
