@@ -1,0 +1,32 @@
+{
+  "boundary_id": "vb-install-filesystem-001",
+  "artifact_type": "verification_boundary_map",
+  "governed_artifact_id": "govrec-install-filesystem-001",
+  "verifier_scope": "Review whether the MCP server install scenario includes required capability, trust, policy, approval, oversight, and audit evidence artifacts.",
+  "evidence_inputs": [
+    "server-capability-block.json",
+    "server-trust-profile.json",
+    "install-request.json",
+    "approval-decision.json",
+    "install-governance-record.json"
+  ],
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-INSTALL-001",
+    "policy_fingerprint": "sha256:placeholder-filesystem-install-policy-fingerprint"
+  },
+  "identity_context": {
+    "requesting_team": "agent-dev-workflow-team",
+    "reviewer_id": "human-reviewer-placeholder",
+    "authority_scope": "approved_project_workspace_only"
+  },
+  "continuity_assumptions": [
+    "The same mcp_server_id appears across capability, trust, request, approval, and governance artifacts.",
+    "The same policy fingerprint appears across trust, approval, governance, boundary, and audit artifacts.",
+    "The approved scope remains limited to the declared approved project workspace."
+  ],
+  "verification_outcomes": {
+    "PASS": "Required install review artifacts are present and internally consistent for MVP governance review.",
+    "FAIL": "Required install review artifacts are missing, policy fingerprints are inconsistent, review evidence is absent, or the approved scope is not declared.",
+    "UNSUPPORTED": "The requested verification requires live runtime enforcement proof, cryptographic package provenance, or external attestation outside the MVP scope."
+  }
+}
