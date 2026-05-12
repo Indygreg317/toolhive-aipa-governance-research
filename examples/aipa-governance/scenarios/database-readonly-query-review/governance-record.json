@@ -1,0 +1,37 @@
+{
+  "governance_record_id": "govrec-database-readonly-001",
+  "artifact_type": "governance_record",
+  "created_at": "2026-05-12T21:00:30Z",
+  "related_request_id": "req-database-readonly-001",
+  "related_decision_context_id": "decision-database-readonly-001",
+  "related_kb_id": "aipa-kb-mcp-database-001",
+  "related_receipt_id": "receipt-database-readonly-001",
+  "mcp_server_id": "mcp-database-reporting",
+  "tool_name": "database.query",
+  "governance_claims": {
+    "policy_was_referenced": true,
+    "policy_fingerprint_was_declared": true,
+    "identity_context_was_declared": true,
+    "read_only_scope_was_declared": true,
+    "approved_database_scope_was_declared": true,
+    "result_handling_requirements_were_declared": true,
+    "execution_receipt_was_recorded": true
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-DB-READ-001",
+    "policy_fingerprint": "sha256:placeholder-database-readonly-policy-fingerprint"
+  },
+  "identity_context": {
+    "agent_id": "agent-analytics-assistant-001",
+    "user_role": "analyst",
+    "authority_scope": "approved_reporting_views_only"
+  },
+  "query_review_record": {
+    "read_only_required": true,
+    "approved_scope": "approved_reporting_views_only",
+    "aggregate_results_only": true,
+    "result_size_limited": true,
+    "row_level_export_not_allowed": true
+  },
+  "review_summary": "The governance record declares that the database query was read-only, scoped to approved reporting views, limited to aggregate results, and linked to execution receipt evidence."
+}

@@ -10,6 +10,7 @@ Each scenario is designed to show a complete governance review path from an MCP 
 | --- | --- | --- | --- |
 | [Filesystem Write Review](./filesystem-write-review/) | MVP complete | PASS | Demonstrates how a high-risk filesystem write request can be represented through request, decision context, execution receipt, governance record, verification boundary, and audit package artifacts. |
 | [Browser Search Source Review](./browser-search-source-review/) | MVP complete | PASS | Demonstrates governance around public-source browser/search tool use, including citation requirements, source identifiers, and unsupported-claim boundaries. |
+| [Database Read-Only Query Review](./database-readonly-query-review/) | MVP complete | PASS | Demonstrates governance around scoped read-only database query use, including query intent, result handling, approved scope, and data-boundary review. |
 | [MCP Server Install Review](./mcp-server-install-review/) | MVP complete | PASS | Demonstrates a successful governance path for approving an MCP server install or exposure decision. |
 | [Denied MCP Server Install](./mcp-server-install-denied/) | MVP failure-mode example | FAIL | Demonstrates how an MCP server install request can be denied when trust context, approved scope, or required evidence is insufficient. |
 | [Unsupported Verification Boundary](./unsupported-verification-boundary/) | MVP boundary example | UNSUPPORTED | Demonstrates how a reviewer should avoid false certainty when required external evidence is outside the available verification boundary. |
@@ -85,7 +86,6 @@ A reviewer should be able to open a scenario folder and understand:
 
 Future scenario packages may include:
 
-- database read-only query review
 - database bulk export escalation
 - cross-tool agent workflow review
 - human override review

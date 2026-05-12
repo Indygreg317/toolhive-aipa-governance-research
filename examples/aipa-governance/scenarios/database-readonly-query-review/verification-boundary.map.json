@@ -1,0 +1,39 @@
+{
+  "boundary_id": "vb-database-readonly-001",
+  "artifact_type": "verification_boundary_map",
+  "governed_artifact_id": "govrec-database-readonly-001",
+  "verifier_scope": "Review whether the database read-only query scenario includes query intent, approved scope, result-handling requirements, policy fingerprint, and execution receipt evidence.",
+  "evidence_inputs": [
+    "request.json",
+    "decision-context.json",
+    "execution-receipt.json",
+    "governance-record.json"
+  ],
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-DB-READ-001",
+    "policy_fingerprint": "sha256:placeholder-database-readonly-policy-fingerprint"
+  },
+  "identity_context": {
+    "agent_id": "agent-analytics-assistant-001",
+    "authority_scope": "approved_reporting_views_only"
+  },
+  "reviewable_claims": [
+    "query intent was declared",
+    "query was declared read-only",
+    "approved reporting scope was declared",
+    "policy fingerprint was present",
+    "execution receipt was recorded",
+    "result handling requirements were declared"
+  ],
+  "unsupported_claims": [
+    "live database permissions were enforced by this governance layer",
+    "data classification labels are independently correct",
+    "query result contains no sensitive data without external inspection",
+    "database state can be reconstructed without a dependency snapshot"
+  ],
+  "verification_outcomes": {
+    "PASS": "Required database read-only review artifacts are present and internally consistent for MVP review.",
+    "FAIL": "Required query scope, result handling, policy fingerprint, or receipt evidence is missing.",
+    "UNSUPPORTED": "The review asks for live database enforcement proof, independent data classification accuracy, or dependency-state reconstruction outside the current boundary."
+  }
+}
