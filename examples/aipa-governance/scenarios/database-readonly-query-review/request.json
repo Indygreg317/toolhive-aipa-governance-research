@@ -1,0 +1,17 @@
+{
+  "request_id": "req-database-readonly-001",
+  "artifact_type": "tool_use_request",
+  "timestamp": "2026-05-12T21:00:00Z",
+  "agent_id": "agent-analytics-assistant-001",
+  "user_role": "analyst",
+  "mcp_server_id": "mcp-database-reporting",
+  "tool_name": "database.query",
+  "requested_operation": {
+    "operation_type": "read_only_query",
+    "database_scope": "approved_reporting_views_only",
+    "query_purpose": "Retrieve aggregate operational metrics for a governance review report.",
+    "input_hash": "sha256:scenario-placeholder-database-query-input-hash"
+  },
+  "declared_intent": "Run a read-only reporting query against approved views and return aggregate results only.",
+  "requested_by": "agent-analytics-assistant-001"
+}
