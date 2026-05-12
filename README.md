@@ -1,5 +1,8 @@
 # ToolHive AIPA Governance Research Fork
 
+> **Announcement:** [AIPA MCP Governance Research Prototype](./ANNOUNCEMENT.md)  
+> Independent AIPA research fork exploring governance context, execution receipts, verification boundaries, and audit evidence for MCP-based agent workflows.
+
 This repository is an independent AIPA research fork of ToolHive.
 
 It explores how AIPA Governance Knowledge Blocks can describe governance context, verification boundaries, execution receipts, and audit evidence requirements for MCP-based agent workflows.
