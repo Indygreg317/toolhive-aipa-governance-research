@@ -25,6 +25,21 @@ Security and runtime systems can control what agents are allowed to do.
 
 Governance artifacts can explain why an action was allowed, under what policy, with what oversight, and what evidence exists for later review.
 
+## v0.1 milestone
+
+The current research milestone is documented here:
+
+- [AIPA v0.1 Milestone Notes](./docs/aipa-governance/v0.1-milestone.md)
+- [Scenario Outcomes](./docs/aipa-governance/scenario-outcomes.md)
+
+v0.1 demonstrates governance review packages across:
+
+```text
+PASS
+FAIL
+UNSUPPORTED
+```
+
 ## AIPA governance overlay
 
 The AIPA research materials are located in:
@@ -40,6 +55,8 @@ Start here:
 
 - [AIPA Governance Notice](./AIPA-GOVERNANCE-NOTICE.md)
 - [AIPA Governance Overlay README](./docs/aipa-governance/README.md)
+- [AIPA v0.1 Milestone Notes](./docs/aipa-governance/v0.1-milestone.md)
+- [Scenario Outcomes](./docs/aipa-governance/scenario-outcomes.md)
 - [Demo Walkthrough](./docs/aipa-governance/demo-walkthrough.md)
 - [Artifact Flow](./docs/aipa-governance/artifact-flow.md)
 - [ToolHive-Style Governance Overlay Lifecycle](./docs/aipa-governance/toolhive-overlay-lifecycle.md)
@@ -52,13 +69,25 @@ Start here:
 
 ## End-to-end scenarios
 
-The fork currently includes two complete review scenarios:
+The fork currently includes six review scenarios:
 
 - [Filesystem Write Review Scenario](./examples/aipa-governance/scenarios/filesystem-write-review/)  
-  Demonstrates runtime/tool-use governance for a high-risk filesystem write request.
+  Demonstrates runtime/tool-use governance for a scoped filesystem change request.
+
+- [Browser Search Source Review Scenario](./examples/aipa-governance/scenarios/browser-search-source-review/)  
+  Demonstrates source identifiers, citation requirements, and unsupported-claim boundaries for browser/search use.
+
+- [Database Read-Only Query Review Scenario](./examples/aipa-governance/scenarios/database-readonly-query-review/)  
+  Demonstrates scoped read-only database access, approved query scope, result handling, and evidence capture.
 
 - [MCP Server Install Review Scenario](./examples/aipa-governance/scenarios/mcp-server-install-review/)  
-  Demonstrates server lifecycle governance for an MCP server install or exposure decision.
+  Demonstrates server lifecycle approval governance for an MCP server install or exposure decision.
+
+- [Denied MCP Server Install Scenario](./examples/aipa-governance/scenarios/mcp-server-install-denied/)  
+  Demonstrates governance-supported denial when trust context, approved scope, or required evidence is insufficient.
+
+- [Unsupported Verification Boundary Scenario](./examples/aipa-governance/scenarios/unsupported-verification-boundary/)  
+  Demonstrates evidence-bound review when required external proof is outside the available verification boundary.
 
 ## Example artifacts
 
@@ -132,9 +161,9 @@ This fork is not:
 
 ## Research status
 
-This is an early MVP research prototype.
+This is a v0.1 research prototype milestone.
 
-The current focus is clarity, artifact structure, and partnership-safe positioning rather than runtime integration.
+The current focus is clarity, artifact structure, scenario coverage, validation semantics, and partnership-safe positioning rather than runtime integration.
 
 ## License
 
