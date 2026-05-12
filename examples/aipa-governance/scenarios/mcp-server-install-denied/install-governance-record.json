@@ -1,0 +1,43 @@
+{
+  "governance_record_id": "govrec-denied-install-filesystem-001",
+  "artifact_type": "mcp_server_install_governance_record",
+  "created_at": "2026-05-12T18:00:30Z",
+  "related_install_request_id": "install-request-denied-filesystem-001",
+  "related_denial_decision_id": "denial-decision-filesystem-install-001",
+  "related_trust_profile_id": "trust-profile-denied-filesystem-001",
+  "related_capability_block_id": "aipa-kb-mcp-server-capability-filesystem-denied-001",
+  "mcp_server_id": "mcp-filesystem-untrusted",
+  "install_decision": {
+    "decision": "denied",
+    "decision_reason": "The server install request lacks approved scope and verified trust evidence for a high-risk filesystem capability.",
+    "approved_scope": "none",
+    "approval_mode": "denied_pending_complete_evidence"
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-INSTALL-001",
+    "policy_name": "Filesystem MCP Server Install Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-filesystem-install-policy-fingerprint"
+  },
+  "governance_claims": {
+    "server_capability_was_declared": true,
+    "server_trust_profile_was_created": true,
+    "policy_fingerprint_was_attached": true,
+    "human_review_was_required": true,
+    "human_review_was_recorded": true,
+    "install_scope_was_declared": false,
+    "audit_evidence_was_identified": true
+  },
+  "human_review": {
+    "required": true,
+    "reviewer_id": "human-reviewer-placeholder",
+    "review_status": "denied",
+    "review_notes": "Denied because approved scope is missing and trust context is insufficient for high-risk filesystem capability."
+  },
+  "evidence_references": [
+    "server-capability-block.json",
+    "server-trust-profile.json",
+    "install-request.json",
+    "denial-decision.json"
+  ],
+  "expected_reviewer_outcome": "FAIL"
+}
