@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipa.network/schemas/mcp-governance-kb.schema.json",
+  "title": "AIPA MCP Governance Knowledge Block",
+  "type": "object",
+  "required": [
+    "kb_id",
+    "artifact_type",
+    "mcp_server",
+    "risk_tier",
+    "allowed_use",
+    "prohibited_use",
+    "human_oversight",
+    "policy_reference",
+    "identity_context",
+    "execution_boundary",
+    "evidence_required",
+    "audit_outputs",
+    "validation_logic"
+  ],
+  "properties": {
+    "kb_id": { "type": "string" },
+    "artifact_type": { "const": "mcp_governance_knowledge_block" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "b_lean_plus_c_layers": {
+      "type": "object",
+      "properties": {
+        "index": { "type": "object" },
+        "trigger": { "type": "object" },
+        "runtime": { "type": "object" },
+        "full": { "type": "object" }
+      }
+    },
+    "mcp_server": {
+      "type": "object",
+      "required": ["server_id", "name", "category", "purpose"],
+      "properties": {
+        "server_id": { "type": "string" },
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "purpose": { "type": "string" }
+      }
+    },
+    "risk_tier": { "enum": ["low", "medium", "high"] },
+    "allowed_use": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "prohibited_use": { "type": "array", "items": { "type": "string" } },
+    "human_oversight": {
+      "type": "object",
+      "required": ["required", "requirement"],
+      "properties": {
+        "required": { "type": "boolean" },
+        "requirement": { "type": "string" },
+        "exception_rationale": { "type": "string" }
+      }
+    },
+    "policy_reference": {
+      "type": "object",
+      "required": ["policy_id", "policy_name", "policy_fingerprint"],
+      "properties": {
+        "policy_id": { "type": "string" },
+        "policy_name": { "type": "string" },
+        "policy_fingerprint": { "type": "string" }
+      }
+    },
+    "identity_context": { "type": "object" },
+    "execution_boundary": { "type": "object" },
+    "evidence_required": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "audit_outputs": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "validation_logic": {
+      "type": "object",
+      "required": ["pass_conditions", "fail_conditions", "unsupported_conditions"],
+      "properties": {
+        "pass_conditions": { "type": "array", "items": { "type": "string" } },
+        "fail_conditions": { "type": "array", "items": { "type": "string" } },
+        "unsupported_conditions": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}
