@@ -2,17 +2,19 @@
 
 This directory contains end-to-end scenario packages for the AIPA MCP governance research overlay.
 
-Each scenario is designed to show a complete governance review path from an MCP tool-use request to an audit package summary.
+Each scenario is designed to show a complete governance review path from an MCP tool-use request or MCP server lifecycle decision to an audit package summary.
 
 ## Current scenarios
 
-| Scenario | Status | Purpose |
-| --- | --- | --- |
-| [Filesystem Write Review](./filesystem-write-review/) | MVP complete | Demonstrates how a high-risk filesystem write request can be represented through request, decision context, execution receipt, governance record, verification boundary, and audit package artifacts. |
+| Scenario | Status | Expected outcome | Purpose |
+| --- | --- | --- | --- |
+| [Filesystem Write Review](./filesystem-write-review/) | MVP complete | PASS | Demonstrates how a high-risk filesystem write request can be represented through request, decision context, execution receipt, governance record, verification boundary, and audit package artifacts. |
+| [MCP Server Install Review](./mcp-server-install-review/) | MVP complete | PASS | Demonstrates a successful governance path for approving an MCP server install or exposure decision. |
+| [Denied MCP Server Install](./mcp-server-install-denied/) | MVP failure-mode example | FAIL | Demonstrates how an MCP server install request can be denied when trust context, approved scope, or required evidence is insufficient. |
 
-## Scenario artifact pattern
+## Runtime tool-use scenario artifact pattern
 
-Each scenario should follow this structure:
+Runtime tool-use scenarios generally follow this structure:
 
 ```text
 README.md
@@ -24,12 +26,27 @@ verification-boundary.map.json
 audit-package-summary.json
 ```
 
+## MCP server install scenario artifact pattern
+
+Install review scenarios generally follow this structure:
+
+```text
+README.md
+server-capability-block.json
+server-trust-profile.json
+install-request.json
+approval-decision.json or denial-decision.json
+install-governance-record.json
+verification-boundary.map.json
+audit-package-summary.json
+```
+
 ## Review flow
 
 ```text
-request
-  -> decision context
-  -> execution receipt
+request or server lifecycle event
+  -> decision context or trust profile
+  -> approval, denial, or escalation decision
   -> governance record
   -> verification boundary
   -> audit package summary
@@ -43,7 +60,7 @@ Scenarios show how those artifacts work together in a reviewable governance pack
 
 A reviewer should be able to open a scenario folder and understand:
 
-- what the agent requested
+- what the agent or user requested
 - what policy context applied
 - whether human oversight was required
 - what evidence was recorded
