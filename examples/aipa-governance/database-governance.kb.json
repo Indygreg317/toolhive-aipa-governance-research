@@ -1,0 +1,94 @@
+{
+  "kb_id": "aipa-kb-mcp-database-001",
+  "artifact_type": "mcp_governance_knowledge_block",
+  "name": "Database MCP Governance Knowledge Block",
+  "description": "Governance context for an MCP database tool that can query structured data under defined identity and policy boundaries.",
+  "b_lean_plus_c_layers": {
+    "index": {
+      "concept": "Database MCP governance",
+      "category": "mcp_server_governance",
+      "risk_tier": "high"
+    },
+    "trigger": {
+      "activation_events": ["database_query_request", "schema_inspection_request", "report_generation_request"],
+      "escalation_events": ["write_query", "bulk_export", "pii_access", "cross_tenant_query"]
+    },
+    "runtime": {
+      "required_checks": ["role_scope", "query_type", "policy_fingerprint_present", "receipt_required"]
+    },
+    "full": {
+      "governance_summary": "Database access requires role-bounded query scope, clear read/write separation, and evidence sufficient for later review."
+    }
+  },
+  "mcp_server": {
+    "server_id": "mcp-database-primary",
+    "name": "Database MCP Server",
+    "category": "database",
+    "purpose": "Query approved structured data for analysis, reporting, and workflow support."
+  },
+  "risk_tier": "high",
+  "allowed_use": [
+    "Run read-only queries within approved schemas.",
+    "Inspect non-sensitive table metadata.",
+    "Generate aggregate reports when policy permits."
+  ],
+  "prohibited_use": [
+    "Run write, update, delete, or schema migration queries without explicit approval.",
+    "Query personally identifiable information outside approved purpose and role scope.",
+    "Export bulk records without a human approval record.",
+    "Query across tenant or authority boundaries."
+  ],
+  "human_oversight": {
+    "required": true,
+    "requirement": "Human approval is required for write operations, bulk export, PII access, cross-tenant queries, or changes to query policy."
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-DB-001",
+    "policy_name": "Database Tool Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-database-policy-fingerprint"
+  },
+  "identity_context": {
+    "agent_id": "agent-data-assistant-001",
+    "user_role": "analyst",
+    "authority_scope": "read_only_approved_schema"
+  },
+  "execution_boundary": {
+    "boundary_id": "vb-database-001",
+    "allowed_query_type": "read_only",
+    "approved_schemas": ["analytics_public"],
+    "bulk_export_allowed_without_review": false,
+    "receipt_required": true
+  },
+  "evidence_required": [
+    "query_hash",
+    "result_hash",
+    "schema_name",
+    "query_type",
+    "policy_fingerprint",
+    "human_approval_record_when_required"
+  ],
+  "audit_outputs": [
+    "execution_receipt",
+    "governance_record",
+    "query_boundary_decision",
+    "human_review_record_if_required"
+  ],
+  "validation_logic": {
+    "pass_conditions": [
+      "query is read-only",
+      "schema is approved",
+      "policy_fingerprint is present",
+      "receipt contains query_hash and result_hash"
+    ],
+    "fail_conditions": [
+      "write query lacks approval",
+      "policy_fingerprint is missing",
+      "query crosses authority boundaries",
+      "bulk export lacks human review"
+    ],
+    "unsupported_conditions": [
+      "semantic SQL analysis is requested but not implemented",
+      "external database permission proof is unavailable"
+    ]
+  }
+}
