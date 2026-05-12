@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipa.network/schemas/execution-receipt.schema.json",
+  "title": "AIPA Execution Receipt",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "timestamp",
+    "agent_id",
+    "mcp_server_id",
+    "tool_name",
+    "input_hash",
+    "output_hash",
+    "policy_decision",
+    "verification_status"
+  ],
+  "properties": {
+    "receipt_id": { "type": "string" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "agent_id": { "type": "string" },
+    "mcp_server_id": { "type": "string" },
+    "tool_name": { "type": "string" },
+    "input_hash": { "type": "string" },
+    "output_hash": { "type": "string" },
+    "policy_decision": { "enum": ["allowed", "denied", "escalated"] },
+    "verification_status": { "enum": ["PASS", "FAIL", "UNSUPPORTED"] },
+    "policy_reference": {
+      "type": "object",
+      "properties": {
+        "policy_id": { "type": "string" },
+        "policy_fingerprint": { "type": "string" }
+      }
+    },
+    "human_review": {
+      "type": "object",
+      "properties": {
+        "required": { "type": "boolean" },
+        "reviewer_id": { "type": "string" },
+        "review_status": { "type": "string" }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
