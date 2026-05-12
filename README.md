@@ -42,9 +42,23 @@ Start here:
 - [AIPA Governance Overlay README](./docs/aipa-governance/README.md)
 - [Demo Walkthrough](./docs/aipa-governance/demo-walkthrough.md)
 - [Artifact Flow](./docs/aipa-governance/artifact-flow.md)
+- [ToolHive-Style Governance Overlay Lifecycle](./docs/aipa-governance/toolhive-overlay-lifecycle.md)
+- [Approval and Denial Policy Model](./docs/aipa-governance/approval-denial-model.md)
+- [Scenario Index](./examples/aipa-governance/scenarios/README.md)
+- [Roadmap](./docs/aipa-governance/roadmap.md)
 - [Positioning](./docs/aipa-governance/positioning.md)
 - [Verification Boundaries](./docs/aipa-governance/verification-boundaries.md)
 - [Partnership-Safe Language](./docs/aipa-governance/partnership-safe-language.md)
+
+## End-to-end scenarios
+
+The fork currently includes two complete review scenarios:
+
+- [Filesystem Write Review Scenario](./examples/aipa-governance/scenarios/filesystem-write-review/)  
+  Demonstrates runtime/tool-use governance for a high-risk filesystem write request.
+
+- [MCP Server Install Review Scenario](./examples/aipa-governance/scenarios/mcp-server-install-review/)  
+  Demonstrates server lifecycle governance for an MCP server install or exposure decision.
 
 ## Example artifacts
 
@@ -60,6 +74,11 @@ It also includes:
 - [Sample governance record](./examples/aipa-governance/sample-governance-record.json)
 - [Sample verification boundary map](./examples/aipa-governance/sample-verification-boundary.map.json)
 - [Audit package summary](./examples/aipa-governance/audit-package-summary.json)
+- [Server trust profile](./examples/aipa-governance/server-trust-profile.json)
+- [MCP server install governance record](./examples/aipa-governance/mcp-server-install-governance-record.json)
+- [Tool approval policy block](./examples/aipa-governance/tool-approval-policy-block.json)
+- [Tool denial policy block](./examples/aipa-governance/tool-denial-policy-block.json)
+- [Tool escalation policy block](./examples/aipa-governance/tool-escalation-policy-block.json)
 
 ## Schemas
 
@@ -68,6 +87,8 @@ The MVP schemas are located in:
 - [MCP Governance Knowledge Block schema](./schemas/aipa-governance/mcp-governance-kb.schema.json)
 - [Execution Receipt schema](./schemas/aipa-governance/execution-receipt.schema.json)
 - [Verification Boundary Map schema](./schemas/aipa-governance/verification-boundary-map.schema.json)
+- [Server Trust Profile schema](./schemas/aipa-governance/server-trust-profile.schema.json)
+- [Tool Approval Policy schema](./schemas/aipa-governance/tool-approval-policy.schema.json)
 
 ## Validator
 
@@ -83,6 +104,12 @@ Example usage:
 python validator/aipa-governance/validate_governance_blocks.py \
   examples/aipa-governance/filesystem-governance.kb.json \
   examples/aipa-governance/sample-execution-receipt.json
+```
+
+Run the demo validation set:
+
+```bash
+python validator/aipa-governance/run_demo_validation.py
 ```
 
 The validator uses three outcomes:
