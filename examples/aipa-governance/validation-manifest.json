@@ -1,0 +1,30 @@
+{
+  "manifest_id": "aipa-mcp-governance-validation-manifest-001",
+  "artifact_type": "validation_manifest",
+  "description": "Demo validation set for the AIPA MCP governance research overlay.",
+  "validator": "validator/aipa-governance/validate_governance_blocks.py",
+  "expected_outcome": "PASS",
+  "artifacts": [
+    {
+      "path": "examples/aipa-governance/filesystem-governance.kb.json",
+      "artifact_type": "mcp_governance_knowledge_block",
+      "expected_status": "PASS"
+    },
+    {
+      "path": "examples/aipa-governance/browser-search-governance.kb.json",
+      "artifact_type": "mcp_governance_knowledge_block",
+      "expected_status": "PASS"
+    },
+    {
+      "path": "examples/aipa-governance/database-governance.kb.json",
+      "artifact_type": "mcp_governance_knowledge_block",
+      "expected_status": "PASS"
+    },
+    {
+      "path": "examples/aipa-governance/sample-execution-receipt.json",
+      "artifact_type": "execution_receipt",
+      "expected_status": "PASS"
+    }
+  ],
+  "notes": "The current MVP validator intentionally treats governance records, audit package summaries, and verification boundary maps as unsupported unless specific validation logic is added later."
+}
