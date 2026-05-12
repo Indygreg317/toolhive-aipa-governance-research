@@ -1,0 +1,44 @@
+{
+  "audit_package_id": "auditpkg-fs-write-001",
+  "artifact_type": "audit_package_summary",
+  "title": "Filesystem Write Review Scenario Audit Package",
+  "created_at": "2026-05-12T16:00:40Z",
+  "review_scope": "End-to-end MVP governance review for a filesystem write request inside an approved workspace.",
+  "related_artifacts": {
+    "request": "examples/aipa-governance/scenarios/filesystem-write-review/request.json",
+    "decision_context": "examples/aipa-governance/scenarios/filesystem-write-review/decision-context.json",
+    "execution_receipt": "examples/aipa-governance/scenarios/filesystem-write-review/execution-receipt.json",
+    "governance_record": "examples/aipa-governance/scenarios/filesystem-write-review/governance-record.json",
+    "verification_boundary_map": "examples/aipa-governance/scenarios/filesystem-write-review/verification-boundary.map.json"
+  },
+  "governed_tool_use": {
+    "mcp_server_id": "mcp-filesystem-local",
+    "tool_name": "filesystem.write_file",
+    "operation_type": "write",
+    "target_path": "/workspace/project/docs/scenario-output.md",
+    "risk_tier": "high",
+    "policy_decision": "escalated",
+    "verification_status": "PASS"
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_fingerprint": "sha256:placeholder-filesystem-policy-fingerprint"
+  },
+  "review_findings": {
+    "path_inside_allowlist": true,
+    "policy_fingerprint_present": true,
+    "identity_context_declared": true,
+    "human_review_required": true,
+    "human_review_present": true,
+    "execution_receipt_present": true,
+    "verification_boundary_present": true
+  },
+  "expected_reviewer_outcome": "PASS",
+  "unsupported_items": [
+    "live ToolHive runtime integration",
+    "cryptographic policy fingerprint resolution",
+    "external verifier attestation",
+    "runtime replay"
+  ],
+  "notes": "This scenario is an explanatory governance package for the AIPA MCP governance research overlay. It does not claim live enforcement or official integration."
+}
