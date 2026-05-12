@@ -2,7 +2,7 @@
 
 This directory contains a minimal validator for the AIPA MCP governance research overlay.
 
-The validator checks whether example governance artifacts contain the required MVP fields and whether their validation status uses the expected AIPA outcomes. It also supports basic scenario-folder validation for end-to-end demo packages.
+The validator checks whether example governance artifacts contain the required MVP fields and whether their validation status uses the expected AIPA outcomes. It also supports scenario-folder validation for end-to-end demo packages.
 
 ## Outcomes
 
@@ -16,6 +16,8 @@ UNSUPPORTED
 
 ## What it checks
 
+### MCP Governance Knowledge Blocks
+
 For MCP Governance Knowledge Blocks, the validator checks that:
 
 - required Knowledge Block fields are present
@@ -24,6 +26,8 @@ For MCP Governance Knowledge Blocks, the validator checks that:
 - high-risk tools require human oversight or explain why not
 - tools define an execution or verification boundary
 - policy references include a policy fingerprint
+
+### Execution receipts
 
 For execution receipts, the validator checks that required receipt fields are present:
 
@@ -45,7 +49,47 @@ FAIL
 UNSUPPORTED
 ```
 
-For scenario folders, the validator checks that the folder contains:
+### Server trust profiles
+
+For server trust profiles, the validator checks that:
+
+- required trust profile fields are present
+- mcp_server.server_id is declared
+- risk_tier is low, medium, or high
+- trust_status is approved, denied, escalated, or unsupported
+- policy_reference includes a policy_fingerprint
+- capability_summary includes capabilities
+- high-risk server profiles require review
+- evidence_references are present
+
+### Approval, denial, and escalation policy blocks
+
+For policy blocks, the validator checks that:
+
+- required policy block fields are present
+- decision_type is approve, deny, or escalate
+- policy_reference includes a policy_fingerprint
+- scope.risk_tier is low, medium, or high
+- conditions.required, conditions.prohibited, and conditions.escalation_triggers are lists
+- required_evidence is present
+- high-risk or sensitive operation policy blocks require human oversight
+- decision_output.decision is approved, denied, or escalated
+- decision_output.review_outcome is PASS, FAIL, or UNSUPPORTED
+
+### Install governance records
+
+For MCP server install governance records, the validator checks that:
+
+- required install governance record fields are present
+- policy_reference includes a policy_fingerprint
+- install_decision.decision is approved, denied, or escalated
+- human_review is present
+- evidence_references are present
+- expected_reviewer_outcome is PASS, FAIL, or UNSUPPORTED
+
+### Runtime tool-use scenario folders
+
+For runtime tool-use scenario folders, the validator checks that the folder contains:
 
 - request.json
 - decision-context.json
@@ -64,6 +108,28 @@ It also performs basic consistency checks:
 - verification boundary maps include evidence inputs
 - audit package expected reviewer outcome is PASS, FAIL, or UNSUPPORTED
 
+### MCP server install scenario folders
+
+For MCP server install scenario folders, the validator checks that the folder contains:
+
+- server-capability-block.json
+- server-trust-profile.json
+- install-request.json
+- approval-decision.json
+- install-governance-record.json
+- verification-boundary.map.json
+- audit-package-summary.json
+
+It also performs basic consistency checks:
+
+- mcp_server_id remains consistent across install artifacts
+- approval decision references the install request
+- install governance record references the install request
+- policy fingerprints remain consistent across trust, approval, governance, boundary, and audit artifacts
+- high-risk server installs include human review
+- verification boundary maps include evidence inputs
+- expected reviewer outcome is PASS, FAIL, or UNSUPPORTED
+
 ## Run the validator directly
 
 From the repository root:
@@ -76,13 +142,22 @@ python validator/aipa-governance/validate_governance_blocks.py \
   examples/aipa-governance/sample-execution-receipt.json
 ```
 
-## Validate a scenario folder
+## Validate a runtime tool-use scenario folder
 
 From the repository root:
 
 ```bash
 python validator/aipa-governance/validate_governance_blocks.py \
   examples/aipa-governance/scenarios/filesystem-write-review
+```
+
+## Validate an MCP server install scenario folder
+
+From the repository root:
+
+```bash
+python validator/aipa-governance/validate_governance_blocks.py \
+  examples/aipa-governance/scenarios/mcp-server-install-review
 ```
 
 ## Run the demo validation set
@@ -99,7 +174,7 @@ The runner uses:
 examples/aipa-governance/validation-manifest.json
 ```
 
-It also validates the filesystem write review scenario folder.
+It validates the manifest artifacts plus both end-to-end scenario folders.
 
 ## MVP limitation
 
