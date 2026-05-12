@@ -1,0 +1,52 @@
+{
+  "policy_block_id": "policy-block-approve-filesystem-001",
+  "artifact_type": "tool_approval_policy_block",
+  "decision_type": "approve",
+  "scope": {
+    "mcp_server_category": "filesystem",
+    "tool_category": "file_write",
+    "risk_tier": "high",
+    "operation_type": "write"
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_name": "Filesystem Tool Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-filesystem-policy-fingerprint"
+  },
+  "conditions": {
+    "required": [
+      "target path is inside approved workspace",
+      "policy fingerprint is present",
+      "execution receipt is required",
+      "human review is present for write operation"
+    ],
+    "prohibited": [
+      "write outside approved workspace",
+      "access credential stores or private keys",
+      "delete files without explicit approval"
+    ],
+    "escalation_triggers": [
+      "path boundary is ambiguous",
+      "policy fingerprint is missing",
+      "write operation affects governance policy files"
+    ]
+  },
+  "required_evidence": [
+    "target_path",
+    "path_boundary_decision",
+    "policy_fingerprint",
+    "human_review_record",
+    "input_hash",
+    "output_hash"
+  ],
+  "human_oversight": {
+    "required": true,
+    "requirement": "Human review is required for high-risk filesystem write operations.",
+    "review_role": "authorized_reviewer"
+  },
+  "decision_output": {
+    "decision": "approved",
+    "review_outcome": "PASS",
+    "notes": "Approval is valid only when all required evidence is present and the path remains inside the approved workspace."
+  }
+}
