@@ -24,7 +24,44 @@
       "path": "examples/aipa-governance/sample-execution-receipt.json",
       "artifact_type": "execution_receipt",
       "expected_status": "PASS"
+    },
+    {
+      "path": "examples/aipa-governance/server-trust-profile.json",
+      "artifact_type": "server_trust_profile",
+      "expected_status": "PASS"
+    },
+    {
+      "path": "examples/aipa-governance/mcp-server-install-governance-record.json",
+      "artifact_type": "mcp_server_install_governance_record",
+      "expected_status": "PASS"
+    },
+    {
+      "path": "examples/aipa-governance/tool-approval-policy-block.json",
+      "artifact_type": "tool_approval_policy_block",
+      "expected_status": "PASS"
+    },
+    {
+      "path": "examples/aipa-governance/tool-denial-policy-block.json",
+      "artifact_type": "tool_approval_policy_block",
+      "expected_status": "PASS"
+    },
+    {
+      "path": "examples/aipa-governance/tool-escalation-policy-block.json",
+      "artifact_type": "tool_approval_policy_block",
+      "expected_status": "PASS"
     }
   ],
-  "notes": "The current MVP validator intentionally treats governance records, audit package summaries, and verification boundary maps as unsupported unless specific validation logic is added later."
+  "scenario_folders": [
+    {
+      "path": "examples/aipa-governance/scenarios/filesystem-write-review",
+      "scenario_type": "runtime_tool_use_review",
+      "expected_status": "PASS"
+    },
+    {
+      "path": "examples/aipa-governance/scenarios/mcp-server-install-review",
+      "scenario_type": "mcp_server_install_review",
+      "expected_status": "PASS"
+    }
+  ],
+  "notes": "The demo validator now supports Knowledge Blocks, execution receipts, server trust profiles, install governance records, approval/denial/escalation policy blocks, runtime tool-use scenarios, and MCP server install scenarios."
 }
