@@ -1,0 +1,52 @@
+{
+  "policy_block_id": "policy-block-deny-filesystem-001",
+  "artifact_type": "tool_approval_policy_block",
+  "decision_type": "deny",
+  "scope": {
+    "mcp_server_category": "filesystem",
+    "tool_category": "file_write",
+    "risk_tier": "high",
+    "operation_type": "write"
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_name": "Filesystem Tool Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-filesystem-policy-fingerprint"
+  },
+  "conditions": {
+    "required": [
+      "target path must be inside approved workspace",
+      "policy fingerprint must be present",
+      "human review must be present for write operation"
+    ],
+    "prohibited": [
+      "target path outside approved workspace",
+      "credential store access",
+      "private key access",
+      "delete or overwrite request without explicit review",
+      "missing policy fingerprint"
+    ],
+    "escalation_triggers": [
+      "source path or target path cannot be resolved",
+      "reviewer authority is unclear",
+      "requested write affects governance or security-sensitive files"
+    ]
+  },
+  "required_evidence": [
+    "target_path",
+    "path_boundary_decision",
+    "policy_fingerprint",
+    "human_review_record",
+    "denial_reason"
+  ],
+  "human_oversight": {
+    "required": true,
+    "requirement": "Human review is required to confirm denial for high-risk filesystem write attempts that violate boundary or evidence requirements.",
+    "review_role": "authorized_reviewer"
+  },
+  "decision_output": {
+    "decision": "denied",
+    "review_outcome": "FAIL",
+    "notes": "Denial applies when the requested operation violates path boundaries, lacks required governance evidence, or attempts prohibited sensitive access."
+  }
+}

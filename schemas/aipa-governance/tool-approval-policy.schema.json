@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipa.network/schemas/tool-approval-policy.schema.json",
+  "title": "AIPA Tool Approval and Denial Policy Block",
+  "type": "object",
+  "required": [
+    "policy_block_id",
+    "artifact_type",
+    "decision_type",
+    "scope",
+    "policy_reference",
+    "conditions",
+    "required_evidence",
+    "human_oversight",
+    "decision_output"
+  ],
+  "properties": {
+    "policy_block_id": { "type": "string" },
+    "artifact_type": { "const": "tool_approval_policy_block" },
+    "decision_type": { "enum": ["approve", "deny", "escalate"] },
+    "scope": {
+      "type": "object",
+      "required": ["mcp_server_category", "tool_category", "risk_tier"],
+      "properties": {
+        "mcp_server_category": { "type": "string" },
+        "tool_category": { "type": "string" },
+        "risk_tier": { "enum": ["low", "medium", "high"] },
+        "operation_type": { "type": "string" }
+      }
+    },
+    "policy_reference": {
+      "type": "object",
+      "required": ["policy_id", "policy_name", "policy_fingerprint"],
+      "properties": {
+        "policy_id": { "type": "string" },
+        "policy_name": { "type": "string" },
+        "policy_fingerprint": { "type": "string" }
+      }
+    },
+    "conditions": {
+      "type": "object",
+      "required": ["required", "prohibited", "escalation_triggers"],
+      "properties": {
+        "required": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "prohibited": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "escalation_triggers": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "required_evidence": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "human_oversight": {
+      "type": "object",
+      "required": ["required", "requirement"],
+      "properties": {
+        "required": { "type": "boolean" },
+        "requirement": { "type": "string" },
+        "review_role": { "type": "string" }
+      }
+    },
+    "decision_output": {
+      "type": "object",
+      "required": ["decision", "review_outcome"],
+      "properties": {
+        "decision": { "enum": ["approved", "denied", "escalated"] },
+        "review_outcome": { "enum": ["PASS", "FAIL", "UNSUPPORTED"] },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}
