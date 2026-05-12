@@ -1,0 +1,34 @@
+{
+  "governance_record_id": "govrec-unsupported-boundary-001",
+  "artifact_type": "governance_record",
+  "created_at": "2026-05-12T19:00:20Z",
+  "related_request_id": "req-unsupported-boundary-001",
+  "mcp_server_id": "mcp-filesystem-local",
+  "governance_claims": {
+    "runtime_replay_was_declared": true,
+    "external_dependency_state_was_declared": true,
+    "source_provenance_was_declared": true,
+    "policy_fingerprint_was_declared": true,
+    "canonical_policy_artifact_was_available": false,
+    "external_attestation_was_available": false,
+    "runtime_replay_evidence_was_available": false,
+    "dependency_state_snapshot_was_available": false
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-UNSUPPORTED-001",
+    "policy_name": "Unsupported Verification Boundary Demonstration Policy",
+    "policy_fingerprint": "sha256:placeholder-unsupported-boundary-policy-fingerprint"
+  },
+  "review_context": {
+    "review_required": true,
+    "review_status": "unsupported",
+    "reviewer_id": "human-reviewer-placeholder",
+    "review_notes": "The declared governance claims cannot be resolved to PASS or FAIL because required external evidence is unavailable inside the current review boundary."
+  },
+  "evidence_references": [
+    "request.json",
+    "verification-boundary.map.json",
+    "audit-package-summary.json"
+  ],
+  "expected_reviewer_outcome": "UNSUPPORTED"
+}

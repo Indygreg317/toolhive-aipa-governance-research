@@ -1,0 +1,31 @@
+{
+  "boundary_id": "vb-unsupported-boundary-001",
+  "artifact_type": "verification_boundary_map",
+  "governed_artifact_id": "govrec-unsupported-boundary-001",
+  "verifier_scope": "Review whether declared runtime replay, dependency state, source provenance, and policy artifact claims can be verified with the evidence available inside the current boundary.",
+  "evidence_inputs": [
+    "request.json",
+    "governance-record.json",
+    "audit-package-summary.json"
+  ],
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-UNSUPPORTED-001",
+    "policy_fingerprint": "sha256:placeholder-unsupported-boundary-policy-fingerprint"
+  },
+  "identity_context": {
+    "reviewer_id": "human-reviewer-placeholder",
+    "authority_scope": "review_only_no_external_attestation"
+  },
+  "unsupported_conditions": [
+    "external attestation is required but not provided",
+    "runtime replay record is required but not provided",
+    "dependency state snapshot is required but not provided",
+    "source provenance record is required but not provided",
+    "policy fingerprint cannot be resolved to a canonical policy artifact"
+  ],
+  "verification_outcomes": {
+    "PASS": "Not available because required external evidence is missing from the current review boundary.",
+    "FAIL": "Not asserted because the available evidence does not prove contradiction; it only fails to support the declared claims inside the current boundary.",
+    "UNSUPPORTED": "The declared verification claims cannot be resolved with the available evidence and must remain unsupported."
+  }
+}
