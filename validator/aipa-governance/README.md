@@ -4,15 +4,38 @@ This directory contains a minimal validator for the AIPA MCP governance research
 
 The validator checks whether example governance artifacts contain the required MVP fields and whether their validation status uses the expected AIPA outcomes. It also supports scenario-folder validation for end-to-end demo packages.
 
-## Outcomes
+## Outcome model
 
-The validator reports one of three outcomes:
+The AIPA governance overlay uses three governance outcomes:
 
 ```text
 PASS
 FAIL
 UNSUPPORTED
 ```
+
+The demo validation path separates two concepts:
+
+```text
+structural validation
+expected governance outcome
+```
+
+Structural validation answers:
+
+```text
+Is the artifact or scenario shaped correctly enough to review?
+```
+
+Expected governance outcome answers:
+
+```text
+What should the review conclusion be?
+```
+
+This matters because a structurally valid `FAIL` scenario should not break CI when `FAIL` is the expected governance outcome.
+
+Likewise, a structurally valid `UNSUPPORTED` scenario should not break CI when `UNSUPPORTED` is the expected governance outcome.
 
 ## What it checks
 
@@ -115,7 +138,7 @@ For MCP server install scenario folders, the validator checks that the folder co
 - server-capability-block.json
 - server-trust-profile.json
 - install-request.json
-- approval-decision.json
+- approval-decision.json or denial-decision.json
 - install-governance-record.json
 - verification-boundary.map.json
 - audit-package-summary.json
@@ -123,12 +146,18 @@ For MCP server install scenario folders, the validator checks that the folder co
 It also performs basic consistency checks:
 
 - mcp_server_id remains consistent across install artifacts
-- approval decision references the install request
+- approval or denial decision references the install request
 - install governance record references the install request
-- policy fingerprints remain consistent across trust, approval, governance, boundary, and audit artifacts
+- policy fingerprints remain consistent across trust, decision, governance, boundary, and audit artifacts
 - high-risk server installs include human review
 - verification boundary maps include evidence inputs
 - expected reviewer outcome is PASS, FAIL, or UNSUPPORTED
+
+### Unsupported verification boundary scenarios
+
+For unsupported verification boundary scenarios, the validator expects the artifact package to demonstrate that required evidence is outside the available review boundary.
+
+The governance outcome should be `UNSUPPORTED`, not `PASS` or `FAIL`.
 
 ## Run the validator directly
 
@@ -174,7 +203,7 @@ The runner uses:
 examples/aipa-governance/validation-manifest.json
 ```
 
-It validates the manifest artifacts plus both end-to-end scenario folders.
+It validates the manifest artifacts and all listed scenario folders, including expected `PASS`, `FAIL`, and `UNSUPPORTED` governance outcomes.
 
 ## MVP limitation
 
