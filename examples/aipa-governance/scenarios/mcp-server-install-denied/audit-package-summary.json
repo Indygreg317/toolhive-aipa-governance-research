@@ -1,0 +1,46 @@
+{
+  "audit_package_id": "auditpkg-denied-install-filesystem-001",
+  "artifact_type": "audit_package_summary",
+  "title": "Denied MCP Server Install Review Audit Package",
+  "created_at": "2026-05-12T18:00:40Z",
+  "review_scope": "End-to-end MVP governance review for denying a high-risk filesystem MCP server install request with incomplete trust and scope evidence.",
+  "related_artifacts": {
+    "server_capability_block": "examples/aipa-governance/scenarios/mcp-server-install-denied/server-capability-block.json",
+    "server_trust_profile": "examples/aipa-governance/scenarios/mcp-server-install-denied/server-trust-profile.json",
+    "install_request": "examples/aipa-governance/scenarios/mcp-server-install-denied/install-request.json",
+    "denial_decision": "examples/aipa-governance/scenarios/mcp-server-install-denied/denial-decision.json",
+    "install_governance_record": "examples/aipa-governance/scenarios/mcp-server-install-denied/install-governance-record.json",
+    "verification_boundary_map": "examples/aipa-governance/scenarios/mcp-server-install-denied/verification-boundary.map.json"
+  },
+  "governed_install_decision": {
+    "mcp_server_id": "mcp-filesystem-untrusted",
+    "server_category": "filesystem",
+    "risk_tier": "high",
+    "install_decision": "denied",
+    "approved_scope": "none",
+    "expected_reviewer_outcome": "FAIL"
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-INSTALL-001",
+    "policy_fingerprint": "sha256:placeholder-filesystem-install-policy-fingerprint"
+  },
+  "review_findings": {
+    "server_capability_block_present": true,
+    "server_trust_profile_present": true,
+    "install_request_present": true,
+    "denial_decision_present": true,
+    "install_governance_record_present": true,
+    "verification_boundary_present": true,
+    "policy_fingerprint_present": true,
+    "human_review_present": true,
+    "approved_scope_declared": false,
+    "source_context_verified": false
+  },
+  "unsupported_items": [
+    "live ToolHive runtime enforcement proof",
+    "cryptographic package provenance verification",
+    "external verifier attestation",
+    "runtime deployment replay"
+  ],
+  "notes": "This scenario is an explanatory governance package for reviewing a denied MCP server install decision. It does not claim official integration or live enforcement."
+}
