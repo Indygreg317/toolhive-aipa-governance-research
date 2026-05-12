@@ -1,0 +1,25 @@
+{
+  "receipt_id": "receipt-2026-05-12-001",
+  "timestamp": "2026-05-12T15:30:00Z",
+  "agent_id": "agent-dev-assistant-001",
+  "mcp_server_id": "mcp-filesystem-local",
+  "tool_name": "filesystem.write_file",
+  "input_hash": "sha256:placeholder-input-hash",
+  "output_hash": "sha256:placeholder-output-hash",
+  "policy_decision": "escalated",
+  "verification_status": "PASS",
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_fingerprint": "sha256:placeholder-filesystem-policy-fingerprint"
+  },
+  "human_review": {
+    "required": true,
+    "reviewer_id": "human-reviewer-placeholder",
+    "review_status": "approved"
+  },
+  "evidence": [
+    "requested_path:/workspace/project/docs/example.md",
+    "operation_type:write",
+    "path_boundary_decision:inside_allowlist"
+  ]
+}
