@@ -1,0 +1,50 @@
+{
+  "kb_id": "aipa-kb-mcp-server-capability-filesystem-install-001",
+  "artifact_type": "mcp_server_capability_knowledge_block",
+  "name": "Filesystem MCP Server Capability Block",
+  "description": "Capability profile for a filesystem MCP server proposed for install or exposure inside an approved project workspace.",
+  "mcp_server": {
+    "server_id": "mcp-filesystem-local",
+    "name": "Filesystem MCP Server",
+    "category": "filesystem",
+    "declared_purpose": "Read, write, and list approved project files for agent-assisted development workflows.",
+    "declared_tools": [
+      "filesystem.read_file",
+      "filesystem.write_file",
+      "filesystem.list_directory"
+    ]
+  },
+  "capability_summary": {
+    "capability_level": "high",
+    "capabilities": [
+      "read files inside approved paths",
+      "write files inside approved paths",
+      "list directory contents inside approved paths"
+    ],
+    "sensitive_capabilities": [
+      "filesystem write access",
+      "directory listing",
+      "potential access to sensitive files if path controls are misconfigured"
+    ]
+  },
+  "risk_tier": "high",
+  "allowed_use": [
+    "project documentation updates inside approved workspace",
+    "read-only inspection of approved project files",
+    "directory listing inside approved project paths"
+  ],
+  "prohibited_use": [
+    "access credential stores or private keys",
+    "write outside approved workspace",
+    "delete files without explicit review",
+    "read personal or unrelated system files"
+  ],
+  "evidence_required": [
+    "server_id",
+    "declared_tools",
+    "risk_tier",
+    "approved_scope",
+    "policy_fingerprint",
+    "human_review_record"
+  ]
+}

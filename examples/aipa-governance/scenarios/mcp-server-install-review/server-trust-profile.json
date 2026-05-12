@@ -1,0 +1,52 @@
+{
+  "trust_profile_id": "trust-profile-install-filesystem-001",
+  "artifact_type": "server_trust_profile",
+  "mcp_server": {
+    "server_id": "mcp-filesystem-local",
+    "name": "Filesystem MCP Server",
+    "category": "filesystem",
+    "declared_purpose": "Read, write, and list approved project files for agent-assisted development workflows.",
+    "declared_tools": [
+      "filesystem.read_file",
+      "filesystem.write_file",
+      "filesystem.list_directory"
+    ]
+  },
+  "source_context": {
+    "source_type": "local_or_registry_reference",
+    "source_reference": "placeholder:mcp-filesystem-local",
+    "maintainer": "placeholder-maintainer",
+    "version_reference": "placeholder-version"
+  },
+  "capability_summary": {
+    "capability_level": "high",
+    "capabilities": [
+      "read approved project files",
+      "write approved project files",
+      "list approved project directories"
+    ],
+    "sensitive_capabilities": [
+      "filesystem write access",
+      "directory listing",
+      "potential sensitive file exposure if path scope fails"
+    ]
+  },
+  "risk_tier": "high",
+  "trust_status": "approved",
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-INSTALL-001",
+    "policy_name": "Filesystem MCP Server Install Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-filesystem-install-policy-fingerprint"
+  },
+  "evidence_references": [
+    "server-capability-block.json",
+    "install-request.json",
+    "approval-decision.json"
+  ],
+  "review_context": {
+    "review_required": true,
+    "review_status": "approved",
+    "reviewer_id": "human-reviewer-placeholder",
+    "review_notes": "Approved for install or exposure only within an approved project workspace and with receipt requirements for write operations."
+  }
+}

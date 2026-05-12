@@ -1,0 +1,30 @@
+{
+  "install_request_id": "install-request-filesystem-001",
+  "artifact_type": "mcp_server_install_request",
+  "timestamp": "2026-05-12T17:00:00Z",
+  "requested_by": "developer-placeholder",
+  "requesting_agent_or_team": "agent-dev-workflow-team",
+  "mcp_server_id": "mcp-filesystem-local",
+  "requested_action": "approve_for_workspace_use",
+  "declared_purpose": "Enable controlled filesystem MCP access for documentation and project file workflows inside an approved workspace.",
+  "requested_scope": {
+    "workspace_scope": "approved_project_workspace_only",
+    "allowed_path_root": "/workspace/project",
+    "requested_tools": [
+      "filesystem.read_file",
+      "filesystem.write_file",
+      "filesystem.list_directory"
+    ]
+  },
+  "risk_acknowledgement": {
+    "risk_tier": "high",
+    "reason": "Filesystem write and directory listing capabilities require strict boundary and oversight controls."
+  },
+  "requested_evidence": [
+    "server capability block",
+    "server trust profile",
+    "policy fingerprint",
+    "human review record",
+    "approved scope declaration"
+  ]
+}

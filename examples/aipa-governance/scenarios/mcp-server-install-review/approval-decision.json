@@ -1,0 +1,39 @@
+{
+  "approval_decision_id": "approval-decision-filesystem-install-001",
+  "artifact_type": "mcp_server_install_approval_decision",
+  "timestamp": "2026-05-12T17:00:20Z",
+  "related_install_request_id": "install-request-filesystem-001",
+  "related_trust_profile_id": "trust-profile-install-filesystem-001",
+  "decision": "approved",
+  "decision_type": "approve",
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-INSTALL-001",
+    "policy_name": "Filesystem MCP Server Install Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-filesystem-install-policy-fingerprint"
+  },
+  "conditions_evaluated": {
+    "server_capability_declared": true,
+    "server_trust_profile_present": true,
+    "risk_tier_assigned": true,
+    "approved_scope_declared": true,
+    "human_review_required": true,
+    "human_review_recorded": true,
+    "policy_fingerprint_present": true
+  },
+  "approved_scope": {
+    "workspace_scope": "approved_project_workspace_only",
+    "allowed_path_root": "/workspace/project",
+    "write_operations_require_receipt": true,
+    "write_operations_require_human_review": true
+  },
+  "human_review": {
+    "required": true,
+    "reviewer_id": "human-reviewer-placeholder",
+    "review_status": "approved",
+    "review_notes": "Approved for bounded project workspace use with explicit receipts and human review for write operations."
+  },
+  "decision_output": {
+    "review_outcome": "PASS",
+    "notes": "Approval is valid for the declared workspace scope only. Sensitive or out-of-scope operations require separate review."
+  }
+}
