@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipa.network/schemas/server-trust-profile.schema.json",
+  "title": "AIPA MCP Server Trust Profile",
+  "type": "object",
+  "required": [
+    "trust_profile_id",
+    "artifact_type",
+    "mcp_server",
+    "source_context",
+    "capability_summary",
+    "risk_tier",
+    "trust_status",
+    "policy_reference",
+    "evidence_references",
+    "review_context"
+  ],
+  "properties": {
+    "trust_profile_id": { "type": "string" },
+    "artifact_type": { "const": "server_trust_profile" },
+    "mcp_server": {
+      "type": "object",
+      "required": ["server_id", "name", "category", "declared_purpose"],
+      "properties": {
+        "server_id": { "type": "string" },
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "declared_purpose": { "type": "string" },
+        "declared_tools": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "source_context": {
+      "type": "object",
+      "required": ["source_type", "source_reference"],
+      "properties": {
+        "source_type": { "type": "string" },
+        "source_reference": { "type": "string" },
+        "maintainer": { "type": "string" },
+        "version_reference": { "type": "string" }
+      }
+    },
+    "capability_summary": {
+      "type": "object",
+      "required": ["capability_level", "capabilities"],
+      "properties": {
+        "capability_level": { "enum": ["low", "medium", "high"] },
+        "capabilities": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "sensitive_capabilities": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "risk_tier": { "enum": ["low", "medium", "high"] },
+    "trust_status": { "enum": ["approved", "denied", "escalated", "unsupported"] },
+    "policy_reference": {
+      "type": "object",
+      "required": ["policy_id", "policy_name", "policy_fingerprint"],
+      "properties": {
+        "policy_id": { "type": "string" },
+        "policy_name": { "type": "string" },
+        "policy_fingerprint": { "type": "string" }
+      }
+    },
+    "evidence_references": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "review_context": {
+      "type": "object",
+      "required": ["review_required", "review_status"],
+      "properties": {
+        "review_required": { "type": "boolean" },
+        "review_status": { "type": "string" },
+        "reviewer_id": { "type": "string" },
+        "review_notes": { "type": "string" }
+      }
+    }
+  }
+}

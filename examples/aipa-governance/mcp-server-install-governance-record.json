@@ -1,0 +1,64 @@
+{
+  "governance_record_id": "govrec-mcp-server-install-001",
+  "artifact_type": "mcp_server_install_governance_record",
+  "created_at": "2026-05-12T16:30:00Z",
+  "install_request_id": "install-request-filesystem-001",
+  "mcp_server_id": "mcp-filesystem-local",
+  "related_trust_profile_id": "trust-profile-filesystem-001",
+  "related_kb_id": "aipa-kb-mcp-filesystem-001",
+  "install_decision": {
+    "decision": "approved",
+    "decision_reason": "Server is approved for MVP demo use because its purpose, tool surface, risk tier, path boundary, policy reference, and human oversight requirements are declared.",
+    "approved_scope": "approved_project_workspace_only",
+    "approval_mode": "human_review_required_for_high_risk_write_operations"
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_name": "Filesystem Tool Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-filesystem-policy-fingerprint"
+  },
+  "server_trust_profile": {
+    "trust_profile_id": "trust-profile-filesystem-001",
+    "trust_status": "approved",
+    "risk_tier": "high",
+    "sensitive_capabilities": [
+      "filesystem write access",
+      "directory listing inside approved paths"
+    ]
+  },
+  "governance_claims": {
+    "server_capability_was_declared": true,
+    "server_trust_profile_was_created": true,
+    "policy_fingerprint_was_attached": true,
+    "human_review_was_required": true,
+    "install_scope_was_declared": true,
+    "audit_evidence_was_identified": true
+  },
+  "human_review": {
+    "required": true,
+    "reviewer_id": "human-reviewer-placeholder",
+    "review_status": "approved",
+    "review_notes": "Approved for demonstration under restricted path scope and receipt requirements."
+  },
+  "evidence_references": [
+    "examples/aipa-governance/server-trust-profile.json",
+    "examples/aipa-governance/filesystem-governance.kb.json",
+    "schemas/aipa-governance/server-trust-profile.schema.json"
+  ],
+  "verification_boundary": {
+    "boundary_id": "vb-mcp-server-install-001",
+    "reviewable_claims": [
+      "policy fingerprint is present",
+      "trust profile is present",
+      "human review is present for high-risk server capability",
+      "approved scope is declared",
+      "evidence references are present"
+    ],
+    "unsupported_claims": [
+      "live runtime enforcement",
+      "external provenance attestation",
+      "cryptographic verification of source package"
+    ]
+  },
+  "expected_reviewer_outcome": "PASS"
+}
