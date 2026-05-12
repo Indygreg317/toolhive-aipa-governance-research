@@ -1,0 +1,40 @@
+{
+  "denial_decision_id": "denial-decision-filesystem-install-001",
+  "artifact_type": "mcp_server_install_denial_decision",
+  "timestamp": "2026-05-12T18:00:20Z",
+  "related_install_request_id": "install-request-denied-filesystem-001",
+  "related_trust_profile_id": "trust-profile-denied-filesystem-001",
+  "decision": "denied",
+  "decision_type": "deny",
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-INSTALL-001",
+    "policy_name": "Filesystem MCP Server Install Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-filesystem-install-policy-fingerprint"
+  },
+  "conditions_evaluated": {
+    "server_capability_declared": true,
+    "server_trust_profile_present": true,
+    "risk_tier_assigned": true,
+    "approved_scope_declared": false,
+    "human_review_required": true,
+    "human_review_recorded": true,
+    "policy_fingerprint_present": true,
+    "source_context_verified": false
+  },
+  "denial_reasons": [
+    "approved workspace scope is not declared",
+    "maintainer context is unknown",
+    "source trust evidence is insufficient",
+    "requested capability level is high risk"
+  ],
+  "human_review": {
+    "required": true,
+    "reviewer_id": "human-reviewer-placeholder",
+    "review_status": "denied",
+    "review_notes": "Denied because the request lacks approved scope and verified trust context for high-risk filesystem capability."
+  },
+  "decision_output": {
+    "review_outcome": "FAIL",
+    "notes": "The request should not be approved until scope, trust evidence, and review requirements are satisfied."
+  }
+}

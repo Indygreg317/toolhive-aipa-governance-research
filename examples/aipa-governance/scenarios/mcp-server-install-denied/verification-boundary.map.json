@@ -1,0 +1,32 @@
+{
+  "boundary_id": "vb-denied-install-filesystem-001",
+  "artifact_type": "verification_boundary_map",
+  "governed_artifact_id": "govrec-denied-install-filesystem-001",
+  "verifier_scope": "Review whether the denied MCP server install scenario includes enough evidence to justify a FAIL outcome for a high-risk server request.",
+  "evidence_inputs": [
+    "server-capability-block.json",
+    "server-trust-profile.json",
+    "install-request.json",
+    "denial-decision.json",
+    "install-governance-record.json"
+  ],
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-INSTALL-001",
+    "policy_fingerprint": "sha256:placeholder-filesystem-install-policy-fingerprint"
+  },
+  "identity_context": {
+    "requesting_team": "agent-dev-workflow-team",
+    "reviewer_id": "human-reviewer-placeholder",
+    "authority_scope": "none_approved"
+  },
+  "continuity_assumptions": [
+    "The same mcp_server_id appears across capability, trust, request, denial, governance, and audit artifacts.",
+    "The same policy fingerprint appears across trust, denial, governance, boundary, and audit artifacts.",
+    "The denial is based on missing approved scope and insufficient trust evidence."
+  ],
+  "verification_outcomes": {
+    "PASS": "Not expected for this scenario because required approval evidence is missing.",
+    "FAIL": "Required install approval evidence is incomplete or insufficient, and the denial decision is documented.",
+    "UNSUPPORTED": "The requested verification requires live runtime enforcement proof, cryptographic package provenance, or external attestation outside the MVP scope."
+  }
+}

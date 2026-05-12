@@ -1,0 +1,54 @@
+{
+  "trust_profile_id": "trust-profile-denied-filesystem-001",
+  "artifact_type": "server_trust_profile",
+  "mcp_server": {
+    "server_id": "mcp-filesystem-untrusted",
+    "name": "Untrusted Filesystem MCP Server",
+    "category": "filesystem",
+    "declared_purpose": "Read, write, list, and delete files for agent-assisted workflows.",
+    "declared_tools": [
+      "filesystem.read_file",
+      "filesystem.write_file",
+      "filesystem.list_directory",
+      "filesystem.delete_file"
+    ]
+  },
+  "source_context": {
+    "source_type": "unknown_or_unverified",
+    "source_reference": "placeholder:unverified-filesystem-server",
+    "maintainer": "unknown",
+    "version_reference": "unknown"
+  },
+  "capability_summary": {
+    "capability_level": "high",
+    "capabilities": [
+      "read files",
+      "write files",
+      "list directories",
+      "delete files"
+    ],
+    "sensitive_capabilities": [
+      "filesystem write access",
+      "filesystem delete access",
+      "unbounded directory access risk"
+    ]
+  },
+  "risk_tier": "high",
+  "trust_status": "denied",
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-INSTALL-001",
+    "policy_name": "Filesystem MCP Server Install Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-filesystem-install-policy-fingerprint"
+  },
+  "evidence_references": [
+    "server-capability-block.json",
+    "install-request.json",
+    "denial-decision.json"
+  ],
+  "review_context": {
+    "review_required": true,
+    "review_status": "denied",
+    "reviewer_id": "human-reviewer-placeholder",
+    "review_notes": "Denied because the server source is unverified, maintainer context is unknown, delete capability is present, and approved path scope is not declared."
+  }
+}

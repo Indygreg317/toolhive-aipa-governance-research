@@ -1,0 +1,30 @@
+{
+  "install_request_id": "install-request-denied-filesystem-001",
+  "artifact_type": "mcp_server_install_request",
+  "timestamp": "2026-05-12T18:00:00Z",
+  "requested_by": "developer-placeholder",
+  "requesting_agent_or_team": "agent-dev-workflow-team",
+  "mcp_server_id": "mcp-filesystem-untrusted",
+  "requested_action": "approve_for_workspace_use",
+  "declared_purpose": "Enable high-risk filesystem MCP access for project workflows.",
+  "requested_scope": {
+    "workspace_scope": "not_declared",
+    "allowed_path_root": null,
+    "requested_tools": [
+      "filesystem.read_file",
+      "filesystem.write_file",
+      "filesystem.list_directory",
+      "filesystem.high_risk_file_operation"
+    ]
+  },
+  "risk_acknowledgement": {
+    "risk_tier": "high",
+    "reason": "High-risk filesystem capabilities require declared path scope, source trust context, policy fingerprint, and human review."
+  },
+  "missing_evidence": [
+    "approved path scope",
+    "verified maintainer context",
+    "source trust evidence",
+    "install request policy fingerprint"
+  ]
+}

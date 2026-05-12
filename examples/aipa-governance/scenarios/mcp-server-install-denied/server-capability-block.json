@@ -1,0 +1,50 @@
+{
+  "kb_id": "aipa-kb-mcp-server-capability-filesystem-denied-001",
+  "artifact_type": "mcp_server_capability_knowledge_block",
+  "name": "Denied Filesystem MCP Server Capability Block",
+  "description": "Capability profile for a proposed filesystem MCP server install that is denied because the governance and trust evidence is incomplete.",
+  "mcp_server": {
+    "server_id": "mcp-filesystem-untrusted",
+    "name": "Untrusted Filesystem MCP Server",
+    "category": "filesystem",
+    "declared_purpose": "Read, write, and list files for agent-assisted workflows.",
+    "declared_tools": [
+      "filesystem.read_file",
+      "filesystem.write_file",
+      "filesystem.list_directory",
+      "filesystem.delete_file"
+    ]
+  },
+  "capability_summary": {
+    "capability_level": "high",
+    "capabilities": [
+      "read files",
+      "write files",
+      "list directories",
+      "delete files"
+    ],
+    "sensitive_capabilities": [
+      "filesystem write access",
+      "filesystem delete access",
+      "directory listing",
+      "potential access to sensitive files if boundaries are not declared"
+    ]
+  },
+  "risk_tier": "high",
+  "allowed_use": [],
+  "prohibited_use": [
+    "approval without declared path scope",
+    "approval without server trust evidence",
+    "approval without policy fingerprint",
+    "approval without human review"
+  ],
+  "evidence_required": [
+    "server_id",
+    "declared_tools",
+    "risk_tier",
+    "approved_scope",
+    "policy_fingerprint",
+    "human_review_record",
+    "source_context"
+  ]
+}
