@@ -3,7 +3,8 @@
 Run the demo validation set for the AIPA MCP governance research overlay.
 
 This script reads examples/aipa-governance/validation-manifest.json and
-runs validate_governance_blocks.py against the listed artifacts.
+runs validate_governance_blocks.py against the listed artifacts plus the
+end-to-end filesystem write review scenario folder.
 """
 
 from __future__ import annotations
@@ -16,6 +17,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[2]
 MANIFEST_PATH = REPO_ROOT / "examples" / "aipa-governance" / "validation-manifest.json"
 VALIDATOR_PATH = REPO_ROOT / "validator" / "aipa-governance" / "validate_governance_blocks.py"
+SCENARIO_PATH = REPO_ROOT / "examples" / "aipa-governance" / "scenarios" / "filesystem-write-review"
 
 
 def load_manifest() -> dict:
@@ -32,6 +34,7 @@ def main() -> int:
         return 1
 
     paths = [str(REPO_ROOT / artifact["path"]) for artifact in artifacts]
+    paths.append(str(SCENARIO_PATH))
 
     command = [sys.executable, str(VALIDATOR_PATH), *paths]
     print("Running AIPA governance demo validation...")
