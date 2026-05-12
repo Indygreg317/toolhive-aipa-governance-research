@@ -1,0 +1,42 @@
+{
+  "decision_context_id": "decision-database-readonly-001",
+  "artifact_type": "decision_context",
+  "related_request_id": "req-database-readonly-001",
+  "related_kb_id": "aipa-kb-mcp-database-001",
+  "timestamp": "2026-05-12T21:00:10Z",
+  "mcp_server": {
+    "server_id": "mcp-database-reporting",
+    "name": "Reporting Database MCP Server",
+    "category": "database"
+  },
+  "risk_tier": "medium",
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-DB-READ-001",
+    "policy_name": "Database Read-Only Query Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-database-readonly-policy-fingerprint"
+  },
+  "identity_context": {
+    "agent_id": "agent-analytics-assistant-001",
+    "user_role": "analyst",
+    "authority_scope": "approved_reporting_views_only"
+  },
+  "query_scope": {
+    "read_only_required": true,
+    "approved_scope": "approved_reporting_views_only",
+    "aggregate_results_only": true,
+    "row_level_export_not_allowed": true
+  },
+  "result_handling_requirements": {
+    "limit_result_size": true,
+    "avoid_sensitive_fields": true,
+    "retain_query_hash": true,
+    "retain_output_hash": true
+  },
+  "oversight_decision": {
+    "human_oversight_required": false,
+    "reason": "Medium-risk read-only aggregate reporting query is allowed when scope, result handling, and evidence requirements are recorded.",
+    "review_status": "not_required_for_demo"
+  },
+  "policy_decision": "approved",
+  "decision_summary": "The database query request is permitted because it is read-only, scoped to approved reporting views, limited to aggregate results, and linked to receipt evidence."
+}
