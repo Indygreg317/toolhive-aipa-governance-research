@@ -1,0 +1,36 @@
+{
+  "governance_record_id": "govrec-browser-search-001",
+  "artifact_type": "governance_record",
+  "created_at": "2026-05-12T20:00:30Z",
+  "related_request_id": "req-browser-search-001",
+  "related_decision_context_id": "decision-browser-search-001",
+  "related_kb_id": "aipa-kb-mcp-browser-search-001",
+  "related_receipt_id": "receipt-browser-search-001",
+  "mcp_server_id": "mcp-browser-search-public",
+  "tool_name": "browser.search",
+  "governance_claims": {
+    "policy_was_referenced": true,
+    "policy_fingerprint_was_declared": true,
+    "identity_context_was_declared": true,
+    "source_identifiers_were_recorded": true,
+    "citation_requirements_were_declared": true,
+    "unsupported_claim_boundary_was_declared": true,
+    "evidence_was_recorded": true
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-BROWSER-001",
+    "policy_fingerprint": "sha256:placeholder-browser-search-policy-fingerprint"
+  },
+  "identity_context": {
+    "agent_id": "agent-research-assistant-001",
+    "user_role": "researcher",
+    "authority_scope": "public_source_research_only"
+  },
+  "source_review_record": {
+    "citations_required": true,
+    "source_identifiers_present": true,
+    "source_quality_limitations_declared": true,
+    "staleness_risk_declared": true
+  },
+  "review_summary": "The governance record declares that browser/search results must be linked to source identifiers and that unsupported claims remain outside the verified boundary."
+}
