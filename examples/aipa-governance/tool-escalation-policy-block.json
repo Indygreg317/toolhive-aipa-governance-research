@@ -1,0 +1,53 @@
+{
+  "policy_block_id": "policy-block-escalate-filesystem-001",
+  "artifact_type": "tool_approval_policy_block",
+  "decision_type": "escalate",
+  "scope": {
+    "mcp_server_category": "filesystem",
+    "tool_category": "file_write",
+    "risk_tier": "high",
+    "operation_type": "write"
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_name": "Filesystem Tool Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-filesystem-policy-fingerprint"
+  },
+  "conditions": {
+    "required": [
+      "request must include target path",
+      "policy reference must be declared",
+      "identity context must be declared"
+    ],
+    "prohibited": [
+      "automatic approval of ambiguous high-risk write operation",
+      "approval without policy fingerprint",
+      "approval without reviewer context when write operation is high risk"
+    ],
+    "escalation_triggers": [
+      "target path is ambiguous",
+      "requested operation affects governance policy files",
+      "server trust profile is incomplete",
+      "policy fingerprint does not match expected value",
+      "reviewer authority context is unclear"
+    ]
+  },
+  "required_evidence": [
+    "target_path",
+    "identity_context",
+    "policy_fingerprint",
+    "server_trust_profile",
+    "reviewer_authority_context",
+    "escalation_reason"
+  ],
+  "human_oversight": {
+    "required": true,
+    "requirement": "Escalated decisions require human review before approval or denial is recorded.",
+    "review_role": "authorized_reviewer"
+  },
+  "decision_output": {
+    "decision": "escalated",
+    "review_outcome": "UNSUPPORTED",
+    "notes": "Escalation applies when the governance context is incomplete or ambiguous and a deterministic approval or denial cannot be produced."
+  }
+}
