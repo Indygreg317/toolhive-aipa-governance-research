@@ -2,7 +2,7 @@
 
 This directory contains end-to-end scenario packages for the AIPA MCP governance research overlay.
 
-Each scenario is designed to show a complete governance review path from an MCP tool-use request or MCP server lifecycle decision to an audit package summary.
+Each scenario is designed to show a complete governance review path from an MCP tool-use request, MCP server lifecycle decision, or verification boundary question to an audit package summary.
 
 ## Current scenarios
 
@@ -11,6 +11,7 @@ Each scenario is designed to show a complete governance review path from an MCP 
 | [Filesystem Write Review](./filesystem-write-review/) | MVP complete | PASS | Demonstrates how a high-risk filesystem write request can be represented through request, decision context, execution receipt, governance record, verification boundary, and audit package artifacts. |
 | [MCP Server Install Review](./mcp-server-install-review/) | MVP complete | PASS | Demonstrates a successful governance path for approving an MCP server install or exposure decision. |
 | [Denied MCP Server Install](./mcp-server-install-denied/) | MVP failure-mode example | FAIL | Demonstrates how an MCP server install request can be denied when trust context, approved scope, or required evidence is insufficient. |
+| [Unsupported Verification Boundary](./unsupported-verification-boundary/) | MVP boundary example | UNSUPPORTED | Demonstrates how a reviewer should avoid false certainty when required external evidence is outside the available verification boundary. |
 
 ## Runtime tool-use scenario artifact pattern
 
@@ -41,12 +42,24 @@ verification-boundary.map.json
 audit-package-summary.json
 ```
 
+## Unsupported verification scenario artifact pattern
+
+Unsupported verification scenarios generally follow this structure:
+
+```text
+README.md
+request.json
+governance-record.json
+verification-boundary.map.json
+audit-package-summary.json
+```
+
 ## Review flow
 
 ```text
 request or server lifecycle event
-  -> decision context or trust profile
-  -> approval, denial, or escalation decision
+  -> decision context, trust profile, or governance record
+  -> approval, denial, escalation, or unsupported boundary decision
   -> governance record
   -> verification boundary
   -> audit package summary
@@ -76,7 +89,6 @@ Future scenario packages may include:
 - database bulk export escalation
 - cross-tool agent workflow review
 - human override review
-- unsupported verification boundary review
 
 ## Boundary
 
