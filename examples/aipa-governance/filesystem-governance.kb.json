@@ -1,0 +1,93 @@
+{
+  "kb_id": "aipa-kb-mcp-filesystem-001",
+  "artifact_type": "mcp_governance_knowledge_block",
+  "name": "Filesystem MCP Governance Knowledge Block",
+  "description": "Governance context for an MCP filesystem tool that can read or write files inside approved project paths.",
+  "b_lean_plus_c_layers": {
+    "index": {
+      "concept": "Filesystem MCP governance",
+      "category": "mcp_server_governance",
+      "risk_tier": "high"
+    },
+    "trigger": {
+      "activation_events": ["file_read_request", "file_write_request", "directory_scan_request"],
+      "escalation_events": ["write_request", "delete_request", "path_outside_allowlist"]
+    },
+    "runtime": {
+      "required_checks": ["path_allowlist", "policy_fingerprint_present", "receipt_required"]
+    },
+    "full": {
+      "governance_summary": "Filesystem access requires strict path boundaries, evidence hashes, and human oversight for destructive or sensitive operations."
+    }
+  },
+  "mcp_server": {
+    "server_id": "mcp-filesystem-local",
+    "name": "Filesystem MCP Server",
+    "category": "filesystem",
+    "purpose": "Read and write approved project files for agent-assisted development workflows."
+  },
+  "risk_tier": "high",
+  "allowed_use": [
+    "Read files inside approved project directories.",
+    "Create non-sensitive documentation files inside approved paths.",
+    "Update files after policy checks and receipt creation."
+  ],
+  "prohibited_use": [
+    "Access files outside the approved project path.",
+    "Read credential stores, private keys, environment secrets, or personal files.",
+    "Delete or overwrite files without explicit approval.",
+    "Exfiltrate file contents to unapproved destinations."
+  ],
+  "human_oversight": {
+    "required": true,
+    "requirement": "Human approval is required before destructive writes, file deletion, credential-adjacent access, or modification of governance policy files."
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_name": "Filesystem Tool Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-filesystem-policy-fingerprint"
+  },
+  "identity_context": {
+    "agent_id": "agent-dev-assistant-001",
+    "user_role": "developer",
+    "authority_scope": "approved_project_workspace_only"
+  },
+  "execution_boundary": {
+    "boundary_id": "vb-filesystem-001",
+    "allowed_paths": ["/workspace/project"],
+    "receipt_required": true,
+    "verification_boundary_map": "examples/aipa-governance/filesystem-verification-boundary.map.json"
+  },
+  "evidence_required": [
+    "requested_path",
+    "operation_type",
+    "input_hash",
+    "output_hash",
+    "policy_fingerprint",
+    "human_approval_record_when_required"
+  ],
+  "audit_outputs": [
+    "execution_receipt",
+    "governance_record",
+    "path_boundary_decision",
+    "human_review_record_if_required"
+  ],
+  "validation_logic": {
+    "pass_conditions": [
+      "requested path is inside the allowlist",
+      "policy_fingerprint is present",
+      "receipt contains input_hash and output_hash",
+      "human oversight is present for destructive operations"
+    ],
+    "fail_conditions": [
+      "requested path is outside the allowlist",
+      "high-risk operation lacks prohibited_use definitions",
+      "required human oversight is missing",
+      "policy_fingerprint is missing"
+    ],
+    "unsupported_conditions": [
+      "operation type is not represented in the current MVP validator",
+      "external attestation is required but not available"
+    ]
+  }
+}
