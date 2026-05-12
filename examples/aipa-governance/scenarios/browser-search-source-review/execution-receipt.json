@@ -1,0 +1,36 @@
+{
+  "receipt_id": "receipt-browser-search-001",
+  "timestamp": "2026-05-12T20:00:20Z",
+  "agent_id": "agent-research-assistant-001",
+  "mcp_server_id": "mcp-browser-search-public",
+  "tool_name": "browser.search",
+  "input_hash": "sha256:scenario-placeholder-browser-search-input-hash",
+  "output_hash": "sha256:scenario-placeholder-browser-search-output-hash",
+  "policy_decision": "approved",
+  "verification_status": "PASS",
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-BROWSER-001",
+    "policy_fingerprint": "sha256:placeholder-browser-search-policy-fingerprint"
+  },
+  "source_evidence": [
+    {
+      "source_id": "source-001",
+      "source_type": "public_web_page",
+      "source_reference": "placeholder:https://example.org/mcp-governance-source-1",
+      "retrieved_at": "2026-05-12T20:00:18Z"
+    },
+    {
+      "source_id": "source-002",
+      "source_type": "public_web_page",
+      "source_reference": "placeholder:https://example.org/agent-tool-use-source-2",
+      "retrieved_at": "2026-05-12T20:00:19Z"
+    }
+  ],
+  "evidence": [
+    "request_id:req-browser-search-001",
+    "decision_context_id:decision-browser-search-001",
+    "source_identifiers_present:true",
+    "citations_required:true",
+    "unsupported_claim_boundary_required:true"
+  ]
+}
