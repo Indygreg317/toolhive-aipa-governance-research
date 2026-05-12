@@ -1,0 +1,30 @@
+{
+  "receipt_id": "receipt-database-readonly-001",
+  "timestamp": "2026-05-12T21:00:20Z",
+  "agent_id": "agent-analytics-assistant-001",
+  "mcp_server_id": "mcp-database-reporting",
+  "tool_name": "database.query",
+  "input_hash": "sha256:scenario-placeholder-database-query-input-hash",
+  "output_hash": "sha256:scenario-placeholder-database-query-output-hash",
+  "policy_decision": "approved",
+  "verification_status": "PASS",
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-DB-READ-001",
+    "policy_fingerprint": "sha256:placeholder-database-readonly-policy-fingerprint"
+  },
+  "query_evidence": {
+    "query_type": "read_only",
+    "database_scope": "approved_reporting_views_only",
+    "result_mode": "aggregate_only",
+    "result_size_limited": true
+  },
+  "evidence": [
+    "request_id:req-database-readonly-001",
+    "decision_context_id:decision-database-readonly-001",
+    "query_type:read_only",
+    "database_scope:approved_reporting_views_only",
+    "result_mode:aggregate_only",
+    "input_hash_present:true",
+    "output_hash_present:true"
+  ]
+}
