@@ -1,0 +1,30 @@
+{
+  "boundary_id": "vb-fs-write-001",
+  "artifact_type": "verification_boundary_map",
+  "governed_artifact_id": "govrec-fs-write-001",
+  "verifier_scope": "Review whether the filesystem write scenario includes the required governance context, evidence references, policy fingerprint, human oversight record, and execution receipt fields.",
+  "evidence_inputs": [
+    "request.json",
+    "decision-context.json",
+    "execution-receipt.json",
+    "governance-record.json"
+  ],
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_fingerprint": "sha256:placeholder-filesystem-policy-fingerprint"
+  },
+  "identity_context": {
+    "agent_id": "agent-dev-assistant-001",
+    "authority_scope": "approved_project_workspace_only"
+  },
+  "continuity_assumptions": [
+    "The same agent_id appears in the request, decision context, execution receipt, and governance record.",
+    "The same policy fingerprint appears in the decision context, execution receipt, governance record, and verification boundary map.",
+    "The target path remains inside the declared approved workspace path."
+  ],
+  "verification_outcomes": {
+    "PASS": "Required artifacts are present and the declared governance context is internally consistent for MVP review.",
+    "FAIL": "Required artifacts are missing, policy fingerprints are inconsistent, human review is missing for the write operation, or the target path falls outside the approved boundary.",
+    "UNSUPPORTED": "The requested verification requires live runtime replay, cryptographic proof, or external attestation outside the MVP scope."
+  }
+}
