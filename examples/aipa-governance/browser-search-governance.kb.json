@@ -1,0 +1,92 @@
+{
+  "kb_id": "aipa-kb-mcp-browser-search-001",
+  "artifact_type": "mcp_governance_knowledge_block",
+  "name": "Browser/Search MCP Governance Knowledge Block",
+  "description": "Governance context for an MCP browser or search tool that retrieves external information for agent workflows.",
+  "b_lean_plus_c_layers": {
+    "index": {
+      "concept": "Browser and search MCP governance",
+      "category": "mcp_server_governance",
+      "risk_tier": "medium"
+    },
+    "trigger": {
+      "activation_events": ["web_search_request", "url_fetch_request", "source_verification_request"],
+      "escalation_events": ["login_wall", "payment_prompt", "credential_entry_request", "untrusted_download"]
+    },
+    "runtime": {
+      "required_checks": ["source_attribution", "freshness_check", "policy_fingerprint_present", "receipt_required"]
+    },
+    "full": {
+      "governance_summary": "Browser and search access requires source attribution, freshness awareness, and clear boundaries around credentials, downloads, and unverifiable claims."
+    }
+  },
+  "mcp_server": {
+    "server_id": "mcp-browser-search",
+    "name": "Browser/Search MCP Server",
+    "category": "browser_search",
+    "purpose": "Retrieve public web information and support source-aware agent responses."
+  },
+  "risk_tier": "medium",
+  "allowed_use": [
+    "Search public web sources for factual support.",
+    "Fetch public documentation pages.",
+    "Compare sources for recency, relevance, and attribution."
+  ],
+  "prohibited_use": [
+    "Enter user credentials into external websites.",
+    "Download unreviewed executable files.",
+    "Treat unverifiable sources as authoritative.",
+    "Bypass paywalls, access controls, or private systems."
+  ],
+  "human_oversight": {
+    "required": false,
+    "requirement": "Human oversight is not required for ordinary public web lookup, but is required before credential entry, downloads, account actions, or high-impact claims.",
+    "exception_rationale": "Public search can proceed without review when no credentials, downloads, private data, or sensitive decisions are involved."
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-WEB-001",
+    "policy_name": "Browser and Search Tool Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-browser-search-policy-fingerprint"
+  },
+  "identity_context": {
+    "agent_id": "agent-research-assistant-001",
+    "user_role": "researcher",
+    "authority_scope": "public_information_retrieval_only"
+  },
+  "execution_boundary": {
+    "boundary_id": "vb-browser-search-001",
+    "allowed_domains": ["public_web"],
+    "credential_entry_allowed": false,
+    "receipt_required": true
+  },
+  "evidence_required": [
+    "query_text_hash",
+    "retrieved_url_list",
+    "retrieval_timestamp",
+    "source_attribution",
+    "policy_fingerprint"
+  ],
+  "audit_outputs": [
+    "execution_receipt",
+    "governance_record",
+    "source_list",
+    "freshness_notes"
+  ],
+  "validation_logic": {
+    "pass_conditions": [
+      "source list is present",
+      "policy_fingerprint is present",
+      "receipt includes timestamp and tool name",
+      "no credential entry or private access is attempted"
+    ],
+    "fail_conditions": [
+      "credential entry is attempted",
+      "policy_fingerprint is missing",
+      "source attribution is absent for factual claims"
+    ],
+    "unsupported_conditions": [
+      "source reliability scoring is requested but not implemented",
+      "private authenticated browsing is requested"
+    ]
+  }
+}
