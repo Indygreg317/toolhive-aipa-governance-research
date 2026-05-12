@@ -1,0 +1,38 @@
+{
+  "decision_context_id": "decision-fs-write-001",
+  "artifact_type": "decision_context",
+  "related_request_id": "req-fs-write-001",
+  "related_kb_id": "aipa-kb-mcp-filesystem-001",
+  "timestamp": "2026-05-12T16:00:10Z",
+  "mcp_server": {
+    "server_id": "mcp-filesystem-local",
+    "name": "Filesystem MCP Server",
+    "category": "filesystem"
+  },
+  "risk_tier": "high",
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_name": "Filesystem Tool Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-filesystem-policy-fingerprint"
+  },
+  "identity_context": {
+    "agent_id": "agent-dev-assistant-001",
+    "user_role": "developer",
+    "authority_scope": "approved_project_workspace_only"
+  },
+  "boundary_check": {
+    "target_path": "/workspace/project/docs/scenario-output.md",
+    "allowed_paths": [
+      "/workspace/project"
+    ],
+    "path_boundary_decision": "inside_allowlist"
+  },
+  "oversight_decision": {
+    "human_oversight_required": true,
+    "reason": "Filesystem write operation in a high-risk tool category.",
+    "review_status": "approved",
+    "reviewer_id": "human-reviewer-placeholder"
+  },
+  "policy_decision": "escalated",
+  "decision_summary": "The write request is permitted after human approval because the target path is inside the approved workspace and required governance evidence is declared."
+}
