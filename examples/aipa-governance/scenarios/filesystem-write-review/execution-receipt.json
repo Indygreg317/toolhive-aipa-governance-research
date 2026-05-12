@@ -1,0 +1,28 @@
+{
+  "receipt_id": "receipt-fs-write-001",
+  "timestamp": "2026-05-12T16:00:20Z",
+  "agent_id": "agent-dev-assistant-001",
+  "mcp_server_id": "mcp-filesystem-local",
+  "tool_name": "filesystem.write_file",
+  "input_hash": "sha256:scenario-placeholder-input-hash",
+  "output_hash": "sha256:scenario-placeholder-output-hash",
+  "policy_decision": "escalated",
+  "verification_status": "PASS",
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_fingerprint": "sha256:placeholder-filesystem-policy-fingerprint"
+  },
+  "human_review": {
+    "required": true,
+    "reviewer_id": "human-reviewer-placeholder",
+    "review_status": "approved"
+  },
+  "evidence": [
+    "request_id:req-fs-write-001",
+    "decision_context_id:decision-fs-write-001",
+    "target_path:/workspace/project/docs/scenario-output.md",
+    "operation_type:write",
+    "path_boundary_decision:inside_allowlist",
+    "human_review_status:approved"
+  ]
+}
