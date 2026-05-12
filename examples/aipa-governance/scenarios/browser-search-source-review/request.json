@@ -1,0 +1,17 @@
+{
+  "request_id": "req-browser-search-001",
+  "artifact_type": "tool_use_request",
+  "timestamp": "2026-05-12T20:00:00Z",
+  "agent_id": "agent-research-assistant-001",
+  "user_role": "researcher",
+  "mcp_server_id": "mcp-browser-search-public",
+  "tool_name": "browser.search",
+  "requested_operation": {
+    "operation_type": "public_source_search",
+    "search_topic": "MCP governance and agent tool-use review evidence",
+    "purpose": "Gather public source material for a governance research note.",
+    "input_hash": "sha256:scenario-placeholder-browser-search-input-hash"
+  },
+  "declared_intent": "Use public search results to support a research note with cited evidence and clear source boundaries.",
+  "requested_by": "agent-research-assistant-001"
+}
