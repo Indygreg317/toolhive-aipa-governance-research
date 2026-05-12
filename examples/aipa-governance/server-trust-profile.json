@@ -1,0 +1,51 @@
+{
+  "trust_profile_id": "trust-profile-filesystem-001",
+  "artifact_type": "server_trust_profile",
+  "mcp_server": {
+    "server_id": "mcp-filesystem-local",
+    "name": "Filesystem MCP Server",
+    "category": "filesystem",
+    "declared_purpose": "Read and write approved project files for agent-assisted development workflows.",
+    "declared_tools": [
+      "filesystem.read_file",
+      "filesystem.write_file",
+      "filesystem.list_directory"
+    ]
+  },
+  "source_context": {
+    "source_type": "local_or_registry_reference",
+    "source_reference": "placeholder:mcp-filesystem-local",
+    "maintainer": "placeholder-maintainer",
+    "version_reference": "placeholder-version"
+  },
+  "capability_summary": {
+    "capability_level": "high",
+    "capabilities": [
+      "read files inside approved paths",
+      "write files inside approved paths",
+      "list directory contents inside approved paths"
+    ],
+    "sensitive_capabilities": [
+      "filesystem write access",
+      "potential access to sensitive local files if path boundaries fail"
+    ]
+  },
+  "risk_tier": "high",
+  "trust_status": "approved",
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_name": "Filesystem Tool Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-filesystem-policy-fingerprint"
+  },
+  "evidence_references": [
+    "examples/aipa-governance/filesystem-governance.kb.json",
+    "examples/aipa-governance/scenarios/filesystem-write-review/decision-context.json",
+    "examples/aipa-governance/scenarios/filesystem-write-review/governance-record.json"
+  ],
+  "review_context": {
+    "review_required": true,
+    "review_status": "approved_for_demo_use",
+    "reviewer_id": "human-reviewer-placeholder",
+    "review_notes": "Approved for MVP governance demonstration with strict approved-path boundaries and human oversight for write operations."
+  }
+}
