@@ -3,65 +3,89 @@
   "artifact_type": "validation_manifest",
   "description": "Demo validation set for the AIPA MCP governance research overlay.",
   "validator": "validator/aipa-governance/validate_governance_blocks.py",
-  "expected_outcome": "PASS",
+  "expected_structural_status": "PASS",
+  "expected_governance_outcomes": ["PASS", "FAIL", "UNSUPPORTED"],
   "artifacts": [
     {
       "path": "examples/aipa-governance/filesystem-governance.kb.json",
       "artifact_type": "mcp_governance_knowledge_block",
-      "expected_status": "PASS"
+      "expected_structural_status": "PASS",
+      "expected_governance_outcome": "PASS"
     },
     {
       "path": "examples/aipa-governance/browser-search-governance.kb.json",
       "artifact_type": "mcp_governance_knowledge_block",
-      "expected_status": "PASS"
+      "expected_structural_status": "PASS",
+      "expected_governance_outcome": "PASS"
     },
     {
       "path": "examples/aipa-governance/database-governance.kb.json",
       "artifact_type": "mcp_governance_knowledge_block",
-      "expected_status": "PASS"
+      "expected_structural_status": "PASS",
+      "expected_governance_outcome": "PASS"
     },
     {
       "path": "examples/aipa-governance/sample-execution-receipt.json",
       "artifact_type": "execution_receipt",
-      "expected_status": "PASS"
+      "expected_structural_status": "PASS",
+      "expected_governance_outcome": "PASS"
     },
     {
       "path": "examples/aipa-governance/server-trust-profile.json",
       "artifact_type": "server_trust_profile",
-      "expected_status": "PASS"
+      "expected_structural_status": "PASS",
+      "expected_governance_outcome": "PASS"
     },
     {
       "path": "examples/aipa-governance/mcp-server-install-governance-record.json",
       "artifact_type": "mcp_server_install_governance_record",
-      "expected_status": "PASS"
+      "expected_structural_status": "PASS",
+      "expected_governance_outcome": "PASS"
     },
     {
       "path": "examples/aipa-governance/tool-approval-policy-block.json",
       "artifact_type": "tool_approval_policy_block",
-      "expected_status": "PASS"
+      "expected_structural_status": "PASS",
+      "expected_governance_outcome": "PASS"
     },
     {
       "path": "examples/aipa-governance/tool-denial-policy-block.json",
       "artifact_type": "tool_approval_policy_block",
-      "expected_status": "PASS"
+      "expected_structural_status": "PASS",
+      "expected_governance_outcome": "FAIL"
     },
     {
       "path": "examples/aipa-governance/tool-escalation-policy-block.json",
       "artifact_type": "tool_approval_policy_block",
-      "expected_status": "PASS"
+      "expected_structural_status": "PASS",
+      "expected_governance_outcome": "UNSUPPORTED"
     }
   ],
   "scenario_folders": [
     {
       "path": "examples/aipa-governance/scenarios/filesystem-write-review",
       "scenario_type": "runtime_tool_use_review",
-      "expected_status": "PASS"
+      "expected_structural_status": "PASS",
+      "expected_governance_outcome": "PASS"
     },
     {
       "path": "examples/aipa-governance/scenarios/mcp-server-install-review",
       "scenario_type": "mcp_server_install_review",
-      "expected_status": "PASS"
+      "expected_structural_status": "PASS",
+      "expected_governance_outcome": "PASS"
+    },
+    {
+      "path": "examples/aipa-governance/scenarios/mcp-server-install-denied",
+      "scenario_type": "mcp_server_install_review",
+      "expected_structural_status": "PASS",
+      "expected_governance_outcome": "FAIL"
+    },
+    {
+      "path": "examples/aipa-governance/scenarios/unsupported-verification-boundary",
+      "scenario_type": "unsupported_verification_boundary",
+      "expected_structural_status": "PASS",
+      "expected_governance_outcome": "UNSUPPORTED"
     }
   ],
-  "notes": "The demo validator now supports Knowledge Blocks, execution receipts, server trust profiles, install governance records, approval/denial/escalation policy blocks, runtime tool-use scenarios, and MCP server install scenarios."
+  "notes": "The demo validator validates structural correctness while the manifest records expected governance outcomes. A structurally valid FAIL or UNSUPPORTED scenario should not break CI when that outcome is expected."
 }
