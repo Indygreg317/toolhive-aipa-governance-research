@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipa.network/schemas/verification-boundary-map.schema.json",
+  "title": "AIPA Verification Boundary Map",
+  "type": "object",
+  "required": [
+    "boundary_id",
+    "artifact_type",
+    "governed_artifact_id",
+    "verifier_scope",
+    "evidence_inputs",
+    "policy_reference",
+    "verification_outcomes"
+  ],
+  "properties": {
+    "boundary_id": { "type": "string" },
+    "artifact_type": { "const": "verification_boundary_map" },
+    "governed_artifact_id": { "type": "string" },
+    "verifier_scope": { "type": "string" },
+    "evidence_inputs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "policy_reference": {
+      "type": "object",
+      "required": ["policy_id", "policy_fingerprint"],
+      "properties": {
+        "policy_id": { "type": "string" },
+        "policy_fingerprint": { "type": "string" }
+      }
+    },
+    "identity_context": { "type": "object" },
+    "continuity_assumptions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "verification_outcomes": {
+      "type": "object",
+      "required": ["PASS", "FAIL", "UNSUPPORTED"],
+      "properties": {
+        "PASS": { "type": "string" },
+        "FAIL": { "type": "string" },
+        "UNSUPPORTED": { "type": "string" }
+      }
+    }
+  }
+}
