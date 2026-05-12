@@ -1,0 +1,38 @@
+{
+  "boundary_id": "vb-browser-search-001",
+  "artifact_type": "verification_boundary_map",
+  "governed_artifact_id": "govrec-browser-search-001",
+  "verifier_scope": "Review whether the browser/search tool-use scenario includes source identifiers, policy references, citation requirements, and unsupported-claim boundaries.",
+  "evidence_inputs": [
+    "request.json",
+    "decision-context.json",
+    "execution-receipt.json",
+    "governance-record.json"
+  ],
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-BROWSER-001",
+    "policy_fingerprint": "sha256:placeholder-browser-search-policy-fingerprint"
+  },
+  "identity_context": {
+    "agent_id": "agent-research-assistant-001",
+    "authority_scope": "public_source_research_only"
+  },
+  "reviewable_claims": [
+    "source identifiers were recorded",
+    "citation requirements were declared",
+    "policy fingerprint was present",
+    "search purpose was declared",
+    "unsupported claim boundary was declared"
+  ],
+  "unsupported_claims": [
+    "external source content remains permanently available",
+    "external source content is complete",
+    "external source content is independently true without additional verification",
+    "future source changes are captured automatically"
+  ],
+  "verification_outcomes": {
+    "PASS": "Required source review artifacts are present and the cited-source governance context is internally consistent for MVP review.",
+    "FAIL": "Required source identifiers, citation requirements, policy fingerprints, or evidence references are missing.",
+    "UNSUPPORTED": "The review asks whether external source content is true, complete, or permanently available without evidence inside the current boundary."
+  }
+}
