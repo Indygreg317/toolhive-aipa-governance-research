@@ -4,6 +4,8 @@ This directory contains a minimal validator for the AIPA MCP governance research
 
 The validator checks whether example governance artifacts contain the required MVP fields and whether their validation status uses the expected AIPA outcomes. It also supports scenario-folder validation for end-to-end demo packages.
 
+The current v0.1 validation manifest covers all six shipped scenario folders.
+
 ## Outcome model
 
 The AIPA governance overlay uses three governance outcomes:
