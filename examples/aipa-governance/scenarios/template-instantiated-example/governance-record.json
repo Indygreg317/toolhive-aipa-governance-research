@@ -1,0 +1,46 @@
+{
+  "governance_record_id": "govrec-template-instantiated-001",
+  "artifact_type": "governance_record",
+  "created_at": "2026-05-13T18:35:30Z",
+  "related_request_id": "request-template-instantiated-001",
+  "related_receipt_id": "receipt-template-instantiated-001",
+  "mcp_server_id": "mcp-filesystem-local",
+  "tool_name": "filesystem.write_file",
+  "governed_action": {
+    "action_type": "runtime_tool_use",
+    "operation_type": "write",
+    "risk_tier": "high",
+    "target_path": "approved_project_workspace/reports/template-instantiated-report.md"
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_name": "Filesystem Tool Governance Policy",
+    "policy_fingerprint": "sha256:template-instantiated-filesystem-policy-fingerprint"
+  },
+  "governance_claims": {
+    "target_path_declared": true,
+    "policy_reference_declared": true,
+    "policy_fingerprint_attached": true,
+    "human_review_required": true,
+    "human_review_recorded": true,
+    "execution_receipt_referenced": true,
+    "unsupported_claims_declared": true
+  },
+  "human_review": {
+    "required": true,
+    "reviewer_id": "authorized-reviewer-placeholder",
+    "review_status": "approved",
+    "review_notes": "Approved for demonstration because the write target is inside the approved workspace boundary."
+  },
+  "evidence_references": [
+    "examples/aipa-governance/scenarios/template-instantiated-example/request.json",
+    "examples/aipa-governance/scenarios/template-instantiated-example/decision-context.json",
+    "examples/aipa-governance/scenarios/template-instantiated-example/execution-receipt.json"
+  ],
+  "unsupported_claims": [
+    "No live runtime enforcement is verified by this governance record.",
+    "No external attestation is included.",
+    "No cryptographic proof of file contents is included."
+  ],
+  "expected_reviewer_outcome": "PASS"
+}
