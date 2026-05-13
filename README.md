@@ -36,6 +36,7 @@ Current milestone documents:
 - [Architecture Diagrams](./docs/aipa-governance/architecture-diagrams.md)
 - [Partner Review Package](./docs/aipa-governance/partner-review-package.md)
 - [Review Handoff Model](./docs/aipa-governance/review-handoff-model.md)
+- [Review Handoff Index](./docs/aipa-governance/review-handoff-index.md)
 - [Policy Fingerprint Evolution](./docs/aipa-governance/policy-fingerprint-evolution.md)
 - [Reusable Governance Overlay Template](./docs/aipa-governance/reusable-overlay-template.md)
 - [Template Usage Guide](./docs/aipa-governance/template-usage-guide.md)
@@ -94,13 +95,14 @@ Recommended reviewer path:
 5. Review the architecture diagrams.
 6. Read the partner review package.
 7. Read the review handoff model.
-8. Read the policy fingerprint evolution notes.
-9. Read the reusable overlay template.
-10. Read the template usage guide.
-11. Run the demo validator.
-12. Inspect the scenario index.
-13. Review PASS, FAIL, and UNSUPPORTED examples.
-14. Read the v0.3 roadmap for planned next-phase work.
+8. Read the review handoff index.
+9. Read the policy fingerprint evolution notes.
+10. Read the reusable overlay template.
+11. Read the template usage guide.
+12. Run the demo validator.
+13. Inspect the scenario index.
+14. Review PASS, FAIL, and UNSUPPORTED examples.
+15. Read the v0.3 roadmap for planned next-phase work.
 ```
 
 Start here:
@@ -114,6 +116,7 @@ Start here:
 - [Architecture Diagrams](./docs/aipa-governance/architecture-diagrams.md)
 - [Partner Review Package](./docs/aipa-governance/partner-review-package.md)
 - [Review Handoff Model](./docs/aipa-governance/review-handoff-model.md)
+- [Review Handoff Index](./docs/aipa-governance/review-handoff-index.md)
 - [Policy Fingerprint Evolution](./docs/aipa-governance/policy-fingerprint-evolution.md)
 - [Reusable Governance Overlay Template](./docs/aipa-governance/reusable-overlay-template.md)
 - [Template Usage Guide](./docs/aipa-governance/template-usage-guide.md)
