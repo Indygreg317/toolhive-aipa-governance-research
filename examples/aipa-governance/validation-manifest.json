@@ -1,7 +1,7 @@
 {
   "manifest_id": "aipa-mcp-governance-validation-manifest-001",
   "artifact_type": "validation_manifest",
-  "description": "Demo validation set for the AIPA MCP governance research overlay.",
+  "description": "Demo validation set for the AIPA MCP governance research overlay v0.1 milestone.",
   "validator": "validator/aipa-governance/validate_governance_blocks.py",
   "expected_structural_status": "PASS",
   "expected_governance_outcomes": ["PASS", "FAIL", "UNSUPPORTED"],
@@ -69,6 +69,18 @@
       "expected_governance_outcome": "PASS"
     },
     {
+      "path": "examples/aipa-governance/scenarios/browser-search-source-review",
+      "scenario_type": "runtime_tool_use_review",
+      "expected_structural_status": "PASS",
+      "expected_governance_outcome": "PASS"
+    },
+    {
+      "path": "examples/aipa-governance/scenarios/database-readonly-query-review",
+      "scenario_type": "runtime_tool_use_review",
+      "expected_structural_status": "PASS",
+      "expected_governance_outcome": "PASS"
+    },
+    {
       "path": "examples/aipa-governance/scenarios/mcp-server-install-review",
       "scenario_type": "mcp_server_install_review",
       "expected_structural_status": "PASS",
@@ -87,5 +99,5 @@
       "expected_governance_outcome": "UNSUPPORTED"
     }
   ],
-  "notes": "The demo validator validates structural correctness while the manifest records expected governance outcomes. A structurally valid FAIL or UNSUPPORTED scenario should not break CI when that outcome is expected."
+  "notes": "The demo validator validates structural correctness while the manifest records expected governance outcomes. A structurally valid FAIL or UNSUPPORTED scenario should not break CI when that outcome is expected. The v0.1 manifest includes all six scenario folders."
 }
