@@ -33,6 +33,7 @@ Current milestone documents:
 - [Scenario Outcomes](./docs/aipa-governance/scenario-outcomes.md)
 - [v0.1 Demo Walkthrough](./docs/aipa-governance/v0.1-demo-walkthrough.md)
 - [Architecture Diagrams](./docs/aipa-governance/architecture-diagrams.md)
+- [Partner Review Package](./docs/aipa-governance/partner-review-package.md)
 - [v0.2 Roadmap](./docs/aipa-governance/v0.2-roadmap.md)
 
 v0.1 demonstrates governance review packages across:
@@ -70,10 +71,11 @@ Recommended reviewer path:
 1. Read the v0.1 milestone notes.
 2. Open the v0.1 demo walkthrough.
 3. Review the architecture diagrams.
-4. Run the demo validator.
-5. Inspect the scenario index.
-6. Review PASS, FAIL, and UNSUPPORTED examples.
-7. Read the v0.2 roadmap.
+4. Read the partner review package.
+5. Run the demo validator.
+6. Inspect the scenario index.
+7. Review PASS, FAIL, and UNSUPPORTED examples.
+8. Read the v0.2 roadmap.
 ```
 
 Start here:
@@ -84,6 +86,7 @@ Start here:
 - [Scenario Outcomes](./docs/aipa-governance/scenario-outcomes.md)
 - [v0.1 Demo Walkthrough](./docs/aipa-governance/v0.1-demo-walkthrough.md)
 - [Architecture Diagrams](./docs/aipa-governance/architecture-diagrams.md)
+- [Partner Review Package](./docs/aipa-governance/partner-review-package.md)
 - [v0.2 Roadmap](./docs/aipa-governance/v0.2-roadmap.md)
 - [Demo Walkthrough](./docs/aipa-governance/demo-walkthrough.md)
 - [Artifact Flow](./docs/aipa-governance/artifact-flow.md)
