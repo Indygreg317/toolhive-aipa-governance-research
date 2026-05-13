@@ -4,20 +4,21 @@
   "version": "0.1",
   "scenario_type": "mcp_server_install_review",
   "governance_record_reference": {
-    "artifact_id": "gov-record-mcp-install-001",
+    "artifact_id": "govrec-mcp-server-install-001",
     "path": "examples/aipa-governance/mcp-server-install-governance-record.json"
   },
   "policy_reference": {
-    "policy_id": "tool-approval-policy-001",
-    "policy_fingerprint": "POLICY-FP-AIPA-001"
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_name": "Filesystem Tool Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-filesystem-policy-fingerprint"
   },
   "expected_governance_outcome": "PASS",
   "verification_boundary_reference": {
-    "artifact_id": "verification-boundary-map-001",
+    "artifact_id": "vb-filesystem-001",
     "path": "examples/aipa-governance/sample-verification-boundary.map.json"
   },
   "audit_package_reference": {
-    "artifact_id": "audit-package-summary-001",
+    "artifact_id": "auditpkg-2026-05-12-001",
     "path": "examples/aipa-governance/audit-package-summary.json"
   },
   "evidence_references": [
