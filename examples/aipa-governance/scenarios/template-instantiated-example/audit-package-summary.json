@@ -4,6 +4,7 @@
   "title": "Template-Instantiated Filesystem Write Governance Review Package",
   "created_at": "2026-05-13T18:35:40Z",
   "review_scope": "Concrete example generated from the reusable runtime tool-use overlay template.",
+  "expected_reviewer_outcome": "PASS",
   "related_artifacts": {
     "request": "examples/aipa-governance/scenarios/template-instantiated-example/request.json",
     "decision_context": "examples/aipa-governance/scenarios/template-instantiated-example/decision-context.json",
