@@ -25,12 +25,13 @@ Security and runtime systems can control what agents are allowed to do.
 
 Governance artifacts can explain why an action was allowed, under what policy, with what oversight, and what evidence exists for later review.
 
-## v0.1 milestone
+## Research milestones
 
-The current research milestone is documented here:
+Current milestone documents:
 
 - [AIPA v0.1 Milestone Notes](./docs/aipa-governance/v0.1-milestone.md)
 - [Scenario Outcomes](./docs/aipa-governance/scenario-outcomes.md)
+- [v0.2 Roadmap](./docs/aipa-governance/v0.2-roadmap.md)
 
 v0.1 demonstrates governance review packages across:
 
@@ -38,6 +39,16 @@ v0.1 demonstrates governance review packages across:
 PASS
 FAIL
 UNSUPPORTED
+```
+
+v0.2 focuses on:
+
+```text
+partner reviewability
+architecture clarity
+external verifier handoff
+policy fingerprint evolution
+reusable governance overlay patterns
 ```
 
 ## AIPA governance overlay
@@ -57,6 +68,7 @@ Start here:
 - [AIPA Governance Overlay README](./docs/aipa-governance/README.md)
 - [AIPA v0.1 Milestone Notes](./docs/aipa-governance/v0.1-milestone.md)
 - [Scenario Outcomes](./docs/aipa-governance/scenario-outcomes.md)
+- [v0.2 Roadmap](./docs/aipa-governance/v0.2-roadmap.md)
 - [Demo Walkthrough](./docs/aipa-governance/demo-walkthrough.md)
 - [Artifact Flow](./docs/aipa-governance/artifact-flow.md)
 - [ToolHive-Style Governance Overlay Lifecycle](./docs/aipa-governance/toolhive-overlay-lifecycle.md)
@@ -161,9 +173,23 @@ This fork is not:
 
 ## Research status
 
-This is a v0.1 research prototype milestone.
+This repository currently contains:
 
-The current focus is clarity, artifact structure, scenario coverage, validation semantics, and partnership-safe positioning rather than runtime integration.
+```text
+v0.1 stable research milestone
+v0.2 roadmap planning
+```
+
+The current focus is:
+
+```text
+clarity
+scenario coverage
+partner-safe positioning
+reviewability
+validation semantics
+external verification boundaries
+```
 
 ## License
 
