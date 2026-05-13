@@ -1,0 +1,110 @@
+{
+  "example_id": "policy-fingerprint-example-001",
+  "artifact_type": "policy_fingerprint_example",
+  "version": "0.1",
+  "purpose": "Show how AIPA policy fingerprints can evolve from placeholder review anchors toward canonical policy-state candidates without claiming cryptographic proof.",
+  "boundary": {
+    "runtime_enforcement_claimed": false,
+    "cryptographic_proof_claimed": false,
+    "external_attestation_claimed": false,
+    "official_integration_claimed": false,
+    "review_scope": "research example only"
+  },
+  "policy_family": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_name": "Filesystem Tool Governance Policy",
+    "policy_domain": "mcp_filesystem_tool_use",
+    "risk_tier": "high"
+  },
+  "placeholder_reference": {
+    "description": "The v0.1/v0.2 placeholder form anchors artifacts to an intended policy family but cannot be recomputed from canonical policy content.",
+    "policy_reference": {
+      "policy_id": "AIPA-MCP-FS-001",
+      "policy_name": "Filesystem Tool Governance Policy",
+      "policy_fingerprint": "sha256:placeholder-filesystem-policy-fingerprint"
+    },
+    "review_status": "usable_as_review_anchor",
+    "proof_status": "not_proof"
+  },
+  "canonical_policy_candidate": {
+    "description": "The candidate form separates canonical policy content from the derived fingerprint that may later be recomputed by a verifier.",
+    "canonicalization_profile": {
+      "profile_id": "aipa-json-canonical-policy-v0.1-candidate",
+      "normalization_rules": [
+        "Use stable field ordering.",
+        "Remove non-semantic whitespace.",
+        "Preserve policy identifiers and rule arrays exactly as reviewed.",
+        "Hash only canonical_policy_payload, not surrounding review notes."
+      ],
+      "hash_algorithm": "sha256"
+    },
+    "canonical_policy_payload": {
+      "policy_id": "AIPA-MCP-FS-001",
+      "policy_name": "Filesystem Tool Governance Policy",
+      "policy_version": "candidate-0.1",
+      "applies_to": [
+        "filesystem.write_file",
+        "filesystem.read_file",
+        "filesystem.list_directory"
+      ],
+      "allowed_use": [
+        "Read or write files inside an approved workspace boundary.",
+        "Generate project documentation inside approved project folders.",
+        "List directory contents inside approved project folders."
+      ],
+      "prohibited_use": [
+        "Access credential stores, private keys, or system configuration paths.",
+        "Write outside the approved workspace boundary.",
+        "Delete files without explicit human approval."
+      ],
+      "human_oversight": {
+        "required_for_high_risk_write": true,
+        "required_for_delete_operations": true,
+        "review_role": "authorized_reviewer"
+      },
+      "evidence_required": [
+        "request_id",
+        "agent_id",
+        "mcp_server_id",
+        "tool_name",
+        "target_path",
+        "policy_decision",
+        "input_hash",
+        "output_hash",
+        "human_review_record_when_required"
+      ],
+      "expected_review_outcomes": [
+        "PASS",
+        "FAIL",
+        "UNSUPPORTED"
+      ]
+    },
+    "candidate_fingerprint": "sha256:candidate-filesystem-policy-state-v0-1",
+    "review_status": "candidate_consistency_anchor",
+    "proof_status": "not_proof_until_canonicalization_is_implemented_and_recomputable"
+  },
+  "comparison": {
+    "placeholder_fingerprint": {
+      "strength": "Easy for humans to recognize and keep consistent across artifacts.",
+      "limitation": "Cannot be independently recomputed from policy contents."
+    },
+    "canonical_candidate_fingerprint": {
+      "strength": "Separates policy content from the derived fingerprint and prepares for future recomputation.",
+      "limitation": "Still a candidate unless canonicalization and recomputation are implemented and documented."
+    }
+  },
+  "review_rules": [
+    "A missing fingerprint should fail structural validation when a policy reference is required.",
+    "A mismatched fingerprint inside the same review package should fail internal consistency validation unless a policy transition is declared.",
+    "A fingerprint that cannot be recomputed should remain a review anchor, not a proof claim.",
+    "Canonical policy fingerprints should only be treated as proof when canonicalization, hashing, and verification procedures are implemented."
+  ],
+  "future_transition_example": {
+    "previous_policy_fingerprint": "sha256:placeholder-filesystem-policy-fingerprint",
+    "current_policy_fingerprint": "sha256:candidate-filesystem-policy-state-v0-1",
+    "transition_reason": "Move from placeholder review anchor to canonical policy-state candidate.",
+    "transition_mode": "declared_research_transition",
+    "human_review_required": true,
+    "verification_status": "UNSUPPORTED_UNTIL_RECOMPUTABLE"
+  }
+}
