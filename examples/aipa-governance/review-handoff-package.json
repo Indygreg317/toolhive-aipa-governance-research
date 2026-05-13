@@ -1,0 +1,47 @@
+{
+  "handoff_package_id": "handoff-mcp-install-review-001",
+  "artifact_type": "review_handoff_package",
+  "version": "0.1",
+  "scenario_type": "mcp_server_install_review",
+  "governance_record_reference": {
+    "artifact_id": "gov-record-mcp-install-001",
+    "path": "examples/aipa-governance/mcp-server-install-governance-record.json"
+  },
+  "policy_reference": {
+    "policy_id": "tool-approval-policy-001",
+    "policy_fingerprint": "POLICY-FP-AIPA-001"
+  },
+  "expected_governance_outcome": "PASS",
+  "verification_boundary_reference": {
+    "artifact_id": "verification-boundary-map-001",
+    "path": "examples/aipa-governance/sample-verification-boundary.map.json"
+  },
+  "audit_package_reference": {
+    "artifact_id": "audit-package-summary-001",
+    "path": "examples/aipa-governance/audit-package-summary.json"
+  },
+  "evidence_references": [
+    {
+      "artifact_type": "server_trust_profile",
+      "path": "examples/aipa-governance/server-trust-profile.json"
+    },
+    {
+      "artifact_type": "install_governance_record",
+      "path": "examples/aipa-governance/mcp-server-install-governance-record.json"
+    },
+    {
+      "artifact_type": "approval_policy_block",
+      "path": "examples/aipa-governance/tool-approval-policy-block.json"
+    }
+  ],
+  "unsupported_claims": [
+    "No live runtime attestation included.",
+    "No cryptographic proof included.",
+    "No external registry verification included."
+  ],
+  "review_notes": {
+    "review_scope": "Example MCP server install governance review.",
+    "review_expectation": "Reviewer should determine whether available evidence supports the expected PASS outcome inside the declared boundary.",
+    "boundary_note": "Claims outside the provided evidence package should remain unsupported."
+  }
+}
