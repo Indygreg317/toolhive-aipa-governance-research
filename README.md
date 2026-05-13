@@ -31,6 +31,7 @@ Current milestone documents:
 
 - [AIPA v0.1 Milestone Notes](./docs/aipa-governance/v0.1-milestone.md)
 - [AIPA v0.2 Milestone Notes](./docs/aipa-governance/v0.2-milestone.md)
+- [AIPA v0.3 Milestone Notes](./docs/aipa-governance/v0.3-milestone.md)
 - [Scenario Outcomes](./docs/aipa-governance/scenario-outcomes.md)
 - [v0.1 Demo Walkthrough](./docs/aipa-governance/v0.1-demo-walkthrough.md)
 - [Architecture Diagrams](./docs/aipa-governance/architecture-diagrams.md)
@@ -63,7 +64,7 @@ reusable governance overlay templates
 milestone alignment
 ```
 
-v0.3 is planned to focus on:
+v0.3 adds:
 
 ```text
 template instantiation
@@ -72,6 +73,7 @@ validator hardening
 policy fingerprint examples
 review handoff indexing
 overlay reuse criteria
+milestone alignment
 ```
 
 ## AIPA governance overlay
@@ -92,19 +94,19 @@ Recommended reviewer path:
 1. Read the README.
 2. Read the v0.1 milestone notes.
 3. Read the v0.2 milestone notes.
-4. Open the v0.1 demo walkthrough.
-5. Review the architecture diagrams.
-6. Read the partner review package.
-7. Read the review handoff model.
-8. Read the review handoff index.
-9. Read the overlay reuse criteria.
-10. Read the policy fingerprint evolution notes.
-11. Read the reusable overlay template.
-12. Read the template usage guide.
-13. Run the demo validator.
-14. Inspect the scenario index.
-15. Review PASS, FAIL, and UNSUPPORTED examples.
-16. Read the v0.3 roadmap for planned next-phase work.
+4. Read the v0.3 milestone notes.
+5. Open the v0.1 demo walkthrough.
+6. Review the architecture diagrams.
+7. Read the partner review package.
+8. Read the review handoff model.
+9. Read the review handoff index.
+10. Read the overlay reuse criteria.
+11. Read the policy fingerprint evolution notes.
+12. Read the reusable overlay template.
+13. Read the template usage guide.
+14. Run the demo validator.
+15. Inspect the scenario index.
+16. Review PASS, FAIL, and UNSUPPORTED examples.
 ```
 
 Start here:
@@ -113,6 +115,7 @@ Start here:
 - [AIPA Governance Overlay README](./docs/aipa-governance/README.md)
 - [AIPA v0.1 Milestone Notes](./docs/aipa-governance/v0.1-milestone.md)
 - [AIPA v0.2 Milestone Notes](./docs/aipa-governance/v0.2-milestone.md)
+- [AIPA v0.3 Milestone Notes](./docs/aipa-governance/v0.3-milestone.md)
 - [Scenario Outcomes](./docs/aipa-governance/scenario-outcomes.md)
 - [v0.1 Demo Walkthrough](./docs/aipa-governance/v0.1-demo-walkthrough.md)
 - [Architecture Diagrams](./docs/aipa-governance/architecture-diagrams.md)
@@ -138,7 +141,7 @@ Start here:
 
 ## End-to-end scenarios
 
-The fork currently includes six review scenarios:
+The fork currently includes seven review scenarios:
 
 - [Filesystem Write Review Scenario](./examples/aipa-governance/scenarios/filesystem-write-review/)  
   Demonstrates runtime/tool-use governance for a scoped filesystem change request.
@@ -157,6 +160,9 @@ The fork currently includes six review scenarios:
 
 - [Unsupported Verification Boundary Scenario](./examples/aipa-governance/scenarios/unsupported-verification-boundary/)  
   Demonstrates evidence-bound review when required external proof is outside the available verification boundary.
+
+- [Template-Instantiated Example Scenario](./examples/aipa-governance/scenarios/template-instantiated-example/)  
+  Demonstrates how the reusable runtime tool-use overlay template can be instantiated into a concrete review package.
 
 ## Example artifacts
 
@@ -252,7 +258,7 @@ This repository currently contains:
 ```text
 v0.1 stable research milestone
 v0.2 partner-reviewable research milestone
-v0.3 roadmap planning
+v0.3 testable and reusable research milestone
 ```
 
 The current focus is:
@@ -266,7 +272,7 @@ validation semantics
 policy fingerprint consistency
 reusable governance overlay templates
 external review boundaries
-future template instantiation and validator hardening
+overlay reuse criteria
 ```
 
 ## License
