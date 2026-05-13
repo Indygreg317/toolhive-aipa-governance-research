@@ -49,6 +49,12 @@ REQUIRED_TRUST_PROFILE_FIELDS = {
     "capability_summary", "risk_tier", "trust_status", "policy_reference",
     "evidence_references", "review_context",
 }
+REQUIRED_HANDOFF_FIELDS = {
+    "handoff_package_id", "artifact_type", "version", "scenario_type",
+    "governance_record_reference", "policy_reference", "expected_governance_outcome",
+    "verification_boundary_reference", "audit_package_reference", "evidence_references",
+    "unsupported_claims", "review_notes",
+}
 
 
 def load_json(path: Path) -> Any:
@@ -72,13 +78,15 @@ def nested(artifact: dict[str, Any], *keys: str) -> Any:
 
 def policy_fingerprint(artifact: dict[str, Any]) -> str | None:
     value = nested(artifact, "policy_reference", "policy_fingerprint")
-    return value if isinstance(value, str) else None
+    return value if isinstance(value, str) and value else None
 
 
 def validate_policy_reference(artifact: dict[str, Any]) -> list[str]:
     ref = artifact.get("policy_reference")
     if not isinstance(ref, dict):
         return ["policy_reference must be an object"]
+    if not ref.get("policy_id"):
+        return ["policy_reference.policy_id is required"]
     if not ref.get("policy_fingerprint"):
         return ["policy_reference.policy_fingerprint is required"]
     return []
@@ -189,6 +197,56 @@ def validate_install_governance_record(artifact: dict[str, Any]) -> tuple[str, l
         errors.append("evidence_references must be a non-empty list")
     if artifact.get("expected_reviewer_outcome") not in VALID_REVIEW_OUTCOMES:
         errors.append("expected_reviewer_outcome must be PASS, FAIL, or UNSUPPORTED")
+
+    return ("FAIL", errors) if errors else ("PASS", [])
+
+
+def referenced_paths_from_handoff(artifact: dict[str, Any]) -> list[str]:
+    paths: list[str] = []
+    for key in ("governance_record_reference", "verification_boundary_reference", "audit_package_reference"):
+        value = artifact.get(key)
+        if isinstance(value, dict) and isinstance(value.get("path"), str):
+            paths.append(value["path"])
+    for ref in artifact.get("evidence_references", []):
+        if isinstance(ref, dict) and isinstance(ref.get("path"), str):
+            paths.append(ref["path"])
+    return paths
+
+
+def validate_review_handoff_package(path: Path, artifact: dict[str, Any]) -> tuple[str, list[str]]:
+    errors: list[str] = []
+    missing(errors, REQUIRED_HANDOFF_FIELDS, artifact, "review handoff package")
+    errors.extend(validate_policy_reference(artifact))
+
+    if artifact.get("expected_governance_outcome") not in VALID_REVIEW_OUTCOMES:
+        errors.append("expected_governance_outcome must be PASS, FAIL, or UNSUPPORTED")
+    if not isinstance(artifact.get("evidence_references"), list) or not artifact.get("evidence_references"):
+        errors.append("evidence_references must be a non-empty list")
+    if not isinstance(artifact.get("unsupported_claims"), list):
+        errors.append("unsupported_claims must be a list")
+
+    repo_root = path.resolve().parents[2]
+    fingerprints = {policy_fingerprint(artifact)}
+    fingerprints.discard(None)
+
+    for relative in referenced_paths_from_handoff(artifact):
+        referenced_path = repo_root / relative
+        if not referenced_path.is_file():
+            errors.append(f"referenced path does not exist: {relative}")
+            continue
+        try:
+            referenced_artifact = load_json(referenced_path)
+        except (json.JSONDecodeError, OSError) as error:
+            errors.append(f"could not inspect referenced artifact {relative}: {error}")
+            continue
+        fingerprint = policy_fingerprint(referenced_artifact)
+        if fingerprint:
+            fingerprints.add(fingerprint)
+
+    if not fingerprints:
+        errors.append("review handoff package must include at least one policy_fingerprint")
+    elif len(fingerprints) > 1:
+        errors.append("policy_fingerprint must remain consistent across review handoff package artifacts")
 
     return ("FAIL", errors) if errors else ("PASS", [])
 
@@ -352,6 +410,8 @@ def validate_artifact(path: Path) -> tuple[str, list[str]]:
         return validate_policy_block(artifact)
     if artifact_type == "mcp_server_install_governance_record":
         return validate_install_governance_record(artifact)
+    if artifact_type == "review_handoff_package":
+        return validate_review_handoff_package(path, artifact)
     if "receipt_id" in artifact:
         return validate_execution_receipt(artifact)
 
