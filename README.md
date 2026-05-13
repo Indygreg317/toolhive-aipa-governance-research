@@ -36,6 +36,7 @@ Current milestone documents:
 - [Partner Review Package](./docs/aipa-governance/partner-review-package.md)
 - [Review Handoff Model](./docs/aipa-governance/review-handoff-model.md)
 - [Policy Fingerprint Evolution](./docs/aipa-governance/policy-fingerprint-evolution.md)
+- [Reusable Governance Overlay Template](./docs/aipa-governance/reusable-overlay-template.md)
 - [v0.2 Roadmap](./docs/aipa-governance/v0.2-roadmap.md)
 
 v0.1 demonstrates governance review packages across:
@@ -64,6 +65,7 @@ The AIPA research materials are located in:
 docs/aipa-governance/
 schemas/aipa-governance/
 examples/aipa-governance/
+templates/aipa-governance/
 validator/aipa-governance/
 ```
 
@@ -76,10 +78,11 @@ Recommended reviewer path:
 4. Read the partner review package.
 5. Read the review handoff model.
 6. Read the policy fingerprint evolution notes.
-7. Run the demo validator.
-8. Inspect the scenario index.
-9. Review PASS, FAIL, and UNSUPPORTED examples.
-10. Read the v0.2 roadmap.
+7. Read the reusable overlay template.
+8. Run the demo validator.
+9. Inspect the scenario index.
+10. Review PASS, FAIL, and UNSUPPORTED examples.
+11. Read the v0.2 roadmap.
 ```
 
 Start here:
@@ -93,12 +96,14 @@ Start here:
 - [Partner Review Package](./docs/aipa-governance/partner-review-package.md)
 - [Review Handoff Model](./docs/aipa-governance/review-handoff-model.md)
 - [Policy Fingerprint Evolution](./docs/aipa-governance/policy-fingerprint-evolution.md)
+- [Reusable Governance Overlay Template](./docs/aipa-governance/reusable-overlay-template.md)
 - [v0.2 Roadmap](./docs/aipa-governance/v0.2-roadmap.md)
 - [Demo Walkthrough](./docs/aipa-governance/demo-walkthrough.md)
 - [Artifact Flow](./docs/aipa-governance/artifact-flow.md)
 - [ToolHive-Style Governance Overlay Lifecycle](./docs/aipa-governance/toolhive-overlay-lifecycle.md)
 - [Approval and Denial Policy Model](./docs/aipa-governance/approval-denial-model.md)
 - [Scenario Index](./examples/aipa-governance/scenarios/README.md)
+- [Reusable Overlay Templates](./templates/aipa-governance/README.md)
 - [Roadmap](./docs/aipa-governance/roadmap.md)
 - [Positioning](./docs/aipa-governance/positioning.md)
 - [Verification Boundaries](./docs/aipa-governance/verification-boundaries.md)
@@ -146,6 +151,15 @@ It also includes:
 - [Tool denial policy block](./examples/aipa-governance/tool-denial-policy-block.json)
 - [Tool escalation policy block](./examples/aipa-governance/tool-escalation-policy-block.json)
 - [Review handoff package example](./examples/aipa-governance/review-handoff-package.json)
+
+## Reusable templates
+
+The v0.2 reusable overlay templates are located in:
+
+- [Template README](./templates/aipa-governance/README.md)
+- [Runtime tool-use overlay template](./templates/aipa-governance/runtime-tool-use-overlay.template.json)
+- [Server install overlay template](./templates/aipa-governance/server-install-overlay.template.json)
+- [Review handoff package template](./templates/aipa-governance/review-handoff-package.template.json)
 
 ## Schemas
 
@@ -205,7 +219,7 @@ This repository currently contains:
 
 ```text
 v0.1 stable research milestone
-v0.2 policy fingerprint phase
+v0.2 reusable overlay template phase
 ```
 
 The current focus is:
@@ -217,6 +231,7 @@ partner-safe positioning
 reviewability
 validation semantics
 policy fingerprint consistency
+reusable governance overlay templates
 external review boundaries
 ```
 
