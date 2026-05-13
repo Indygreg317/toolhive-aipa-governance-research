@@ -1,0 +1,47 @@
+{
+  "boundary_id": "vb-template-instantiated-001",
+  "artifact_type": "verification_boundary_map",
+  "governed_artifact_id": "govrec-template-instantiated-001",
+  "related_request_id": "request-template-instantiated-001",
+  "verifier_scope": "Review whether the template-instantiated filesystem write package contains required governance evidence and internally consistent policy context.",
+  "evidence_inputs": [
+    "request.json",
+    "decision-context.json",
+    "execution-receipt.json",
+    "governance-record.json",
+    "human_review_record"
+  ],
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_name": "Filesystem Tool Governance Policy",
+    "policy_fingerprint": "sha256:template-instantiated-filesystem-policy-fingerprint"
+  },
+  "reviewable_claims": [
+    "The request identifies a filesystem write operation.",
+    "The target path is declared.",
+    "The policy reference is present.",
+    "The policy fingerprint is present and consistent across scenario artifacts.",
+    "Human review is recorded for a high-risk write operation.",
+    "The execution receipt references input and output hashes."
+  ],
+  "unsupported_claims": [
+    "Live runtime sandbox enforcement is not verified.",
+    "External attestation is not included.",
+    "Cryptographic verification of file contents is not included.",
+    "Runtime replay is not included."
+  ],
+  "identity_context": {
+    "agent_id": "agent-dev-assistant-001",
+    "authority_scope": "approved_project_workspace_only"
+  },
+  "continuity_assumptions": [
+    "The policy fingerprint references the same policy state across the provided artifacts.",
+    "The target path remains inside the approved workspace boundary.",
+    "The human review status applies to this specific request."
+  ],
+  "verification_outcomes": {
+    "PASS": "Required evidence is present and internally consistent inside the declared boundary.",
+    "FAIL": "Required evidence is missing, inconsistent, or violates the declared boundary.",
+    "UNSUPPORTED": "The requested verification condition is outside the provided evidence boundary."
+  }
+}
