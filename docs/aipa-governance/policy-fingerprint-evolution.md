@@ -1,6 +1,6 @@
 # Policy Fingerprint Evolution
 
-This document defines the v0.2 policy fingerprint direction for the AIPA MCP governance research overlay.
+This document defines the v0.2 and v0.3 policy fingerprint direction for the AIPA MCP governance research overlay.
 
 The goal is to make policy references more reviewable without claiming cryptographic proof, runtime enforcement, or official integration.
 
@@ -33,6 +33,32 @@ The first validation target is internal consistency.
 
 If a governance record, policy block, verification boundary map, audit package, and handoff package all claim to belong to the same review package, their policy fingerprints should align unless a declared policy transition is present.
 
+## v0.3 example artifact
+
+v0.3 adds a concrete research example:
+
+```text
+examples/aipa-governance/policy-fingerprint-example.json
+```
+
+The example shows the distinction between:
+
+```text
+placeholder fingerprint
+```
+
+and:
+
+```text
+canonical policy fingerprint candidate
+```
+
+The placeholder form is useful as a review anchor.
+
+The canonical candidate form separates policy content from a future derived fingerprint.
+
+The candidate is still not a proof claim unless canonicalization, hashing, and independent recomputation are implemented.
+
 ## Minimum policy reference shape
 
 A policy reference should include:
@@ -53,7 +79,7 @@ A policy reference should include:
 
 ## Review rules
 
-For v0.2, validators and reviewers should apply these rules:
+For v0.2 and v0.3, validators and reviewers should apply these rules:
 
 - Every governed artifact should include a policy reference when it declares or evaluates policy context.
 - Every policy reference should include a policy fingerprint.
@@ -61,6 +87,7 @@ For v0.2, validators and reviewers should apply these rules:
 - A missing fingerprint should produce `FAIL` for structural validation.
 - A conflicting fingerprint should produce `FAIL` for internal consistency.
 - A fingerprint that cannot be independently recomputed should remain a review anchor, not a proof claim.
+- A canonical candidate fingerprint should remain a candidate until canonicalization and recomputation are implemented.
 
 ## Policy transitions
 
@@ -80,7 +107,7 @@ A transition-aware package may include fields such as:
 
 This is not part of the current enforcement model.
 
-For now, the v0.2 validator focuses on consistency among declared fingerprints.
+For now, the validator focuses on consistency among declared fingerprints.
 
 ## Boundary
 
@@ -98,10 +125,10 @@ It helps reviewers detect missing, mismatched, or unsupported policy context.
 
 ## Summary
 
-v0.2 policy fingerprint evolution means:
+Policy fingerprint evolution means:
 
 ```text
-Policy fingerprints move from placeholder labels toward consistency anchors.
+Policy fingerprints move from placeholder labels toward consistency anchors and future canonical policy-state candidates.
 ```
 
 That is enough to improve reviewability while keeping the project safely inside a research-overlay boundary.
