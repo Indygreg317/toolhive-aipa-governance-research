@@ -30,6 +30,7 @@ Governance artifacts can explain why an action was allowed, under what policy, w
 Current milestone documents:
 
 - [AIPA v0.1 Milestone Notes](./docs/aipa-governance/v0.1-milestone.md)
+- [AIPA v0.2 Milestone Notes](./docs/aipa-governance/v0.2-milestone.md)
 - [Scenario Outcomes](./docs/aipa-governance/scenario-outcomes.md)
 - [v0.1 Demo Walkthrough](./docs/aipa-governance/v0.1-demo-walkthrough.md)
 - [Architecture Diagrams](./docs/aipa-governance/architecture-diagrams.md)
@@ -47,14 +48,15 @@ FAIL
 UNSUPPORTED
 ```
 
-v0.2 focuses on:
+v0.2 adds:
 
 ```text
 partner reviewability
 architecture clarity
 review handoff boundaries
-policy fingerprint evolution
-reusable governance overlay patterns
+policy fingerprint consistency
+reusable governance overlay templates
+milestone alignment
 ```
 
 ## AIPA governance overlay
@@ -72,17 +74,18 @@ validator/aipa-governance/
 Recommended reviewer path:
 
 ```text
-1. Read the v0.1 milestone notes.
-2. Open the v0.1 demo walkthrough.
-3. Review the architecture diagrams.
-4. Read the partner review package.
-5. Read the review handoff model.
-6. Read the policy fingerprint evolution notes.
-7. Read the reusable overlay template.
-8. Run the demo validator.
-9. Inspect the scenario index.
-10. Review PASS, FAIL, and UNSUPPORTED examples.
-11. Read the v0.2 roadmap.
+1. Read the README.
+2. Read the v0.1 milestone notes.
+3. Read the v0.2 milestone notes.
+4. Open the v0.1 demo walkthrough.
+5. Review the architecture diagrams.
+6. Read the partner review package.
+7. Read the review handoff model.
+8. Read the policy fingerprint evolution notes.
+9. Read the reusable overlay template.
+10. Run the demo validator.
+11. Inspect the scenario index.
+12. Review PASS, FAIL, and UNSUPPORTED examples.
 ```
 
 Start here:
@@ -90,6 +93,7 @@ Start here:
 - [AIPA Governance Notice](./AIPA-GOVERNANCE-NOTICE.md)
 - [AIPA Governance Overlay README](./docs/aipa-governance/README.md)
 - [AIPA v0.1 Milestone Notes](./docs/aipa-governance/v0.1-milestone.md)
+- [AIPA v0.2 Milestone Notes](./docs/aipa-governance/v0.2-milestone.md)
 - [Scenario Outcomes](./docs/aipa-governance/scenario-outcomes.md)
 - [v0.1 Demo Walkthrough](./docs/aipa-governance/v0.1-demo-walkthrough.md)
 - [Architecture Diagrams](./docs/aipa-governance/architecture-diagrams.md)
@@ -219,7 +223,7 @@ This repository currently contains:
 
 ```text
 v0.1 stable research milestone
-v0.2 reusable overlay template phase
+v0.2 partner-reviewable research milestone
 ```
 
 The current focus is:
