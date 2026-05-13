@@ -1,0 +1,40 @@
+{
+  "decision_context_id": "decision-context-template-instantiated-001",
+  "artifact_type": "decision_context",
+  "related_request_id": "request-template-instantiated-001",
+  "created_at": "2026-05-13T18:35:10Z",
+  "mcp_server": {
+    "server_id": "mcp-filesystem-local",
+    "server_name": "Local Filesystem MCP Server"
+  },
+  "tool_use": {
+    "tool_name": "filesystem.write_file",
+    "operation_type": "write",
+    "risk_tier": "high",
+    "target_path": "approved_project_workspace/reports/template-instantiated-report.md"
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-FS-001",
+    "policy_name": "Filesystem Tool Governance Policy",
+    "policy_fingerprint": "sha256:template-instantiated-filesystem-policy-fingerprint"
+  },
+  "allowed_use": [
+    "Create or update files inside approved_project_workspace only.",
+    "Write generated reports when the target path is inside the approved workspace."
+  ],
+  "prohibited_use": [
+    "Write outside approved_project_workspace.",
+    "Access credential stores, private keys, or system configuration paths.",
+    "Delete files without explicit approval."
+  ],
+  "human_oversight": {
+    "required": true,
+    "review_role": "authorized_reviewer",
+    "review_status": "approved",
+    "review_note": "Approved because the target path is inside the declared workspace boundary."
+  },
+  "decision": {
+    "policy_decision": "approved",
+    "decision_reason": "The request is inside approved scope, uses a declared filesystem write tool, includes policy context, and has human review for a high-risk write operation."
+  }
+}

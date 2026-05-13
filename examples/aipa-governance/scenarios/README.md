@@ -14,6 +14,7 @@ Each scenario is designed to show a complete governance review path from an MCP 
 | [MCP Server Install Review](./mcp-server-install-review/) | MVP complete | PASS | Demonstrates a successful governance path for approving an MCP server install or exposure decision. |
 | [Denied MCP Server Install](./mcp-server-install-denied/) | MVP failure-mode example | FAIL | Demonstrates how an MCP server install request can be denied when trust context, approved scope, or required evidence is insufficient. |
 | [Unsupported Verification Boundary](./unsupported-verification-boundary/) | MVP boundary example | UNSUPPORTED | Demonstrates how a reviewer should avoid false certainty when required external evidence is outside the available verification boundary. |
+| [Template-Instantiated Example](./template-instantiated-example/) | v0.3 template reuse example | PASS | Demonstrates how the reusable runtime tool-use overlay template can be instantiated into a concrete scenario package with consistent policy fingerprints and evidence-bound claims. |
 
 ## Runtime tool-use scenario artifact pattern
 
@@ -27,6 +28,12 @@ execution-receipt.json
 governance-record.json
 verification-boundary.map.json
 audit-package-summary.json
+```
+
+A scenario may also include:
+
+```text
+review-handoff-package.json
 ```
 
 ## MCP server install scenario artifact pattern
@@ -81,6 +88,22 @@ A reviewer should be able to open a scenario folder and understand:
 - what evidence was recorded
 - what boundary separates declaration from review
 - what the expected audit outcome is
+
+## Template reuse
+
+The template-instantiated example demonstrates how a reusable overlay template can become a concrete review package.
+
+It is useful for reviewers who want to understand how future scenarios can be created from:
+
+```text
+templates/aipa-governance/
+```
+
+and checked against:
+
+```text
+docs/aipa-governance/template-usage-guide.md
+```
 
 ## Planned scenarios
 
