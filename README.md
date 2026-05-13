@@ -31,6 +31,7 @@ Current milestone documents:
 
 - [AIPA v0.1 Milestone Notes](./docs/aipa-governance/v0.1-milestone.md)
 - [Scenario Outcomes](./docs/aipa-governance/scenario-outcomes.md)
+- [v0.1 Demo Walkthrough](./docs/aipa-governance/v0.1-demo-walkthrough.md)
 - [v0.2 Roadmap](./docs/aipa-governance/v0.2-roadmap.md)
 
 v0.1 demonstrates governance review packages across:
@@ -62,12 +63,24 @@ examples/aipa-governance/
 validator/aipa-governance/
 ```
 
+Recommended reviewer path:
+
+```text
+1. Read the v0.1 milestone notes.
+2. Open the v0.1 demo walkthrough.
+3. Run the demo validator.
+4. Inspect the scenario index.
+5. Review PASS, FAIL, and UNSUPPORTED examples.
+6. Read the v0.2 roadmap.
+```
+
 Start here:
 
 - [AIPA Governance Notice](./AIPA-GOVERNANCE-NOTICE.md)
 - [AIPA Governance Overlay README](./docs/aipa-governance/README.md)
 - [AIPA v0.1 Milestone Notes](./docs/aipa-governance/v0.1-milestone.md)
 - [Scenario Outcomes](./docs/aipa-governance/scenario-outcomes.md)
+- [v0.1 Demo Walkthrough](./docs/aipa-governance/v0.1-demo-walkthrough.md)
 - [v0.2 Roadmap](./docs/aipa-governance/v0.2-roadmap.md)
 - [Demo Walkthrough](./docs/aipa-governance/demo-walkthrough.md)
 - [Artifact Flow](./docs/aipa-governance/artifact-flow.md)
