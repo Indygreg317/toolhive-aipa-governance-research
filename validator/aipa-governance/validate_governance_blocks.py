@@ -19,6 +19,7 @@ VALID_REVIEW_OUTCOMES = {"PASS", "FAIL", "UNSUPPORTED"}
 VALID_POLICY_DECISIONS = {"approve", "deny", "escalate"}
 VALID_DECISION_OUTPUTS = {"approved", "denied", "escalated"}
 VALID_RISK_TIERS = {"low", "medium", "high"}
+REPO_ROOT = Path(__file__).resolve().parents[2]
 
 REQUIRED_KB_FIELDS = {
     "kb_id", "artifact_type", "mcp_server", "risk_tier", "allowed_use",
@@ -79,6 +80,34 @@ def nested(artifact: dict[str, Any], *keys: str) -> Any:
 def policy_fingerprint(artifact: dict[str, Any]) -> str | None:
     value = nested(artifact, "policy_reference", "policy_fingerprint")
     return value if isinstance(value, str) and value else None
+
+
+def collect_artifact_paths(value: Any) -> list[str]:
+    """Collect repository-relative JSON/schema paths embedded in an artifact."""
+    paths: list[str] = []
+    if isinstance(value, dict):
+        for item in value.values():
+            paths.extend(collect_artifact_paths(item))
+    elif isinstance(value, list):
+        for item in value:
+            paths.extend(collect_artifact_paths(item))
+    elif isinstance(value, str):
+        if value.startswith(("examples/", "schemas/", "templates/", "docs/")):
+            paths.append(value)
+    return paths
+
+
+def validate_referenced_paths(errors: list[str], artifact: dict[str, Any], label: str) -> None:
+    """Check that repository-relative paths referenced by an artifact exist."""
+    for relative in sorted(set(collect_artifact_paths(artifact))):
+        if not (REPO_ROOT / relative).exists():
+            errors.append(f"{label} references missing path: {relative}")
+
+
+def validate_non_empty_list(errors: list[str], artifact: dict[str, Any], field: str, label: str) -> None:
+    value = artifact.get(field)
+    if not isinstance(value, list) or not value:
+        errors.append(f"{label}.{field} must be a non-empty list")
 
 
 def validate_policy_reference(artifact: dict[str, Any]) -> list[str]:
@@ -225,12 +254,11 @@ def validate_review_handoff_package(path: Path, artifact: dict[str, Any]) -> tup
     if not isinstance(artifact.get("unsupported_claims"), list):
         errors.append("unsupported_claims must be a list")
 
-    repo_root = path.resolve().parents[2]
     fingerprints = {policy_fingerprint(artifact)}
     fingerprints.discard(None)
 
     for relative in referenced_paths_from_handoff(artifact):
-        referenced_path = repo_root / relative
+        referenced_path = REPO_ROOT / relative
         if not referenced_path.is_file():
             errors.append(f"referenced path does not exist: {relative}")
             continue
@@ -249,6 +277,20 @@ def validate_review_handoff_package(path: Path, artifact: dict[str, Any]) -> tup
         errors.append("policy_fingerprint must remain consistent across review handoff package artifacts")
 
     return ("FAIL", errors) if errors else ("PASS", [])
+
+
+def validate_optional_handoff(path: Path, errors: list[str]) -> None:
+    handoff_path = path / "review-handoff-package.json"
+    if not handoff_path.is_file():
+        return
+    try:
+        handoff = load_json(handoff_path)
+    except (json.JSONDecodeError, OSError) as error:
+        errors.append(f"review-handoff-package.json: could not inspect handoff package: {error}")
+        return
+    status, handoff_errors = validate_review_handoff_package(handoff_path, handoff)
+    if status == "FAIL":
+        errors.extend(f"review-handoff-package.json: {message}" for message in handoff_errors)
 
 
 def validate_runtime_scenario(path: Path) -> tuple[str, list[str]]:
@@ -274,17 +316,43 @@ def validate_runtime_scenario(path: Path) -> tuple[str, list[str]]:
     if request_id and len({request_id, decision_context.get("related_request_id"), governance_record.get("related_request_id")}) != 1:
         errors.append("request_id must match across runtime scenario artifacts")
 
-    fingerprints = {policy_fingerprint(decision_context), policy_fingerprint(receipt), policy_fingerprint(governance_record), policy_fingerprint(boundary_map), policy_fingerprint(audit_package)}
+    receipt_agent = receipt.get("agent_id")
+    request_agent = nested(request, "requester", "agent_id")
+    if receipt_agent and request_agent and receipt_agent != request_agent:
+        errors.append("agent_id must remain consistent across request and execution receipt")
+
+    receipt_server = receipt.get("mcp_server_id")
+    request_server = nested(request, "mcp_server", "server_id")
+    governance_server = governance_record.get("mcp_server_id")
+    server_ids = {receipt_server, request_server, governance_server}
+    server_ids.discard(None)
+    if len(server_ids) > 1:
+        errors.append("mcp_server_id must remain consistent across runtime scenario artifacts")
+
+    fingerprints = {policy_fingerprint(request), policy_fingerprint(decision_context), policy_fingerprint(receipt), policy_fingerprint(governance_record), policy_fingerprint(boundary_map), policy_fingerprint(audit_package)}
     fingerprints.discard(None)
     if not fingerprints:
         errors.append("scenario must include at least one policy_fingerprint")
     elif len(fingerprints) > 1:
         errors.append("policy_fingerprint must remain consistent across runtime scenario artifacts")
 
+    risk_values = {nested(request, "tool_use", "risk_tier"), nested(decision_context, "tool_use", "risk_tier"), nested(audit_package, "governed_tool_use", "risk_tier")}
+    if "high" in risk_values:
+        if nested(decision_context, "human_oversight", "required") is not True:
+            errors.append("high-risk runtime scenario must require human oversight in decision-context.json")
+        if nested(governance_record, "human_review", "required") is not True:
+            errors.append("high-risk runtime scenario must require human review in governance-record.json")
+
     if not boundary_map.get("evidence_inputs"):
         errors.append("verification boundary map must include evidence_inputs")
+    validate_non_empty_list(errors, boundary_map, "unsupported_claims", "verification-boundary.map.json")
+    if "unsupported_claims" in governance_record:
+        validate_non_empty_list(errors, governance_record, "unsupported_claims", "governance-record.json")
     if audit_package.get("expected_reviewer_outcome") not in VALID_REVIEW_OUTCOMES:
         errors.append("audit package expected_reviewer_outcome must be PASS, FAIL, or UNSUPPORTED")
+    validate_referenced_paths(errors, governance_record, "governance-record.json")
+    validate_referenced_paths(errors, audit_package, "audit-package-summary.json")
+    validate_optional_handoff(path, errors)
 
     return ("FAIL", errors) if errors else ("PASS", [])
 
@@ -348,8 +416,13 @@ def validate_install_scenario(path: Path) -> tuple[str, list[str]]:
 
     if not boundary_map.get("evidence_inputs"):
         errors.append("install verification boundary map must include evidence_inputs")
+    if "unsupported_claims" in boundary_map:
+        validate_non_empty_list(errors, boundary_map, "unsupported_claims", "verification-boundary.map.json")
     if nested(audit_package, "governed_install_decision", "expected_reviewer_outcome") not in VALID_REVIEW_OUTCOMES:
         errors.append("audit package expected reviewer outcome must be PASS, FAIL, or UNSUPPORTED")
+    validate_referenced_paths(errors, install_record, "install-governance-record.json")
+    validate_referenced_paths(errors, audit_package, "audit-package-summary.json")
+    validate_optional_handoff(path, errors)
 
     return ("FAIL", errors) if errors else ("PASS", [])
 
@@ -379,10 +452,14 @@ def validate_unsupported_scenario(path: Path) -> tuple[str, list[str]]:
 
     if not boundary_map.get("evidence_inputs"):
         errors.append("unsupported verification boundary map must include evidence_inputs")
+    validate_non_empty_list(errors, boundary_map, "unsupported_claims", "verification-boundary.map.json")
     if nested(audit_package, "governed_review", "expected_reviewer_outcome") != "UNSUPPORTED":
         errors.append("unsupported scenario expected reviewer outcome must be UNSUPPORTED")
     if not audit_package.get("unsupported_items"):
         errors.append("unsupported scenario must include unsupported_items")
+    validate_referenced_paths(errors, governance_record, "governance-record.json")
+    validate_referenced_paths(errors, audit_package, "audit-package-summary.json")
+    validate_optional_handoff(path, errors)
 
     return ("FAIL", errors) if errors else ("PASS", [])
 
