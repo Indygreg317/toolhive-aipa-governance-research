@@ -1,0 +1,48 @@
+{
+  "handoff_package_id": "handoff-placeholder-001",
+  "artifact_type": "review_handoff_package",
+  "version": "0.1",
+  "scenario_type": "runtime_tool_use_review | mcp_server_install_review | unsupported_verification_boundary",
+  "governance_record_reference": {
+    "artifact_id": "placeholder-governance-record-id",
+    "path": "examples/aipa-governance/scenarios/placeholder/governance-record.json"
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-PLACEHOLDER-001",
+    "policy_name": "Placeholder MCP Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-policy-fingerprint"
+  },
+  "expected_governance_outcome": "PASS | FAIL | UNSUPPORTED",
+  "verification_boundary_reference": {
+    "artifact_id": "placeholder-verification-boundary-id",
+    "path": "examples/aipa-governance/scenarios/placeholder/verification-boundary.map.json"
+  },
+  "audit_package_reference": {
+    "artifact_id": "placeholder-audit-package-id",
+    "path": "examples/aipa-governance/scenarios/placeholder/audit-package-summary.json"
+  },
+  "evidence_references": [
+    {
+      "artifact_type": "request_or_install_request",
+      "path": "examples/aipa-governance/scenarios/placeholder/request.json"
+    },
+    {
+      "artifact_type": "governance_record",
+      "path": "examples/aipa-governance/scenarios/placeholder/governance-record.json"
+    },
+    {
+      "artifact_type": "policy_or_decision_context",
+      "path": "examples/aipa-governance/scenarios/placeholder/decision-context.json"
+    }
+  ],
+  "unsupported_claims": [
+    "No live runtime attestation included.",
+    "No cryptographic proof included.",
+    "No external registry verification included."
+  ],
+  "review_notes": {
+    "review_scope": "Describe the exact review scope for this handoff package.",
+    "review_expectation": "Reviewer should determine whether available evidence supports the expected outcome inside the declared boundary.",
+    "boundary_note": "Claims outside the provided evidence package should remain unsupported."
+  }
+}

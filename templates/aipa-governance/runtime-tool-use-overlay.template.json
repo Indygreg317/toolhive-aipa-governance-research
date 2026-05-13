@@ -1,0 +1,63 @@
+{
+  "template_id": "aipa-runtime-tool-use-overlay-template-001",
+  "artifact_type": "runtime_tool_use_overlay_template",
+  "version": "0.1",
+  "scenario_type": "runtime_tool_use_review",
+  "governed_tool_use": {
+    "mcp_server_id": "placeholder-mcp-server-id",
+    "mcp_server_name": "Placeholder MCP Server",
+    "tool_name": "placeholder.tool_name",
+    "tool_category": "filesystem | browser_search | database | other",
+    "risk_tier": "low | medium | high",
+    "operation_type": "read | write | search | query | install | other"
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-PLACEHOLDER-001",
+    "policy_name": "Placeholder MCP Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-policy-fingerprint"
+  },
+  "allowed_use": [
+    "Describe approved tool use here."
+  ],
+  "prohibited_use": [
+    "Describe prohibited tool use here."
+  ],
+  "human_oversight": {
+    "required": true,
+    "review_role": "authorized_reviewer",
+    "requirement": "Describe when human review is required."
+  },
+  "required_artifacts": [
+    "request.json",
+    "decision-context.json",
+    "execution-receipt.json",
+    "governance-record.json",
+    "verification-boundary.map.json",
+    "audit-package-summary.json"
+  ],
+  "evidence_inputs": [
+    "request intent",
+    "policy reference",
+    "policy fingerprint",
+    "input hash",
+    "output hash",
+    "human review record when required"
+  ],
+  "reviewable_claims": [
+    "The governed tool use was identified.",
+    "The policy reference was declared.",
+    "The policy fingerprint was attached.",
+    "Required evidence was listed.",
+    "The verification boundary was declared."
+  ],
+  "unsupported_claims": [
+    "No live runtime enforcement is claimed by this template.",
+    "No external attestation is included by default.",
+    "No cryptographic proof is included by default."
+  ],
+  "expected_governance_outcome": "PASS | FAIL | UNSUPPORTED",
+  "validation_notes": {
+    "policy_fingerprint_rule": "Artifacts in the same overlay package should use the same policy_fingerprint unless a policy transition is declared.",
+    "boundary_rule": "Claims outside the provided evidence package should remain UNSUPPORTED."
+  }
+}
