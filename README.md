@@ -38,6 +38,7 @@ Current milestone documents:
 - [Review Handoff Model](./docs/aipa-governance/review-handoff-model.md)
 - [Policy Fingerprint Evolution](./docs/aipa-governance/policy-fingerprint-evolution.md)
 - [Reusable Governance Overlay Template](./docs/aipa-governance/reusable-overlay-template.md)
+- [Template Usage Guide](./docs/aipa-governance/template-usage-guide.md)
 - [v0.2 Roadmap](./docs/aipa-governance/v0.2-roadmap.md)
 - [v0.3 Roadmap](./docs/aipa-governance/v0.3-roadmap.md)
 
@@ -64,6 +65,7 @@ v0.3 is planned to focus on:
 
 ```text
 template instantiation
+template usage guidance
 validator hardening
 policy fingerprint examples
 review handoff indexing
@@ -94,10 +96,11 @@ Recommended reviewer path:
 7. Read the review handoff model.
 8. Read the policy fingerprint evolution notes.
 9. Read the reusable overlay template.
-10. Run the demo validator.
-11. Inspect the scenario index.
-12. Review PASS, FAIL, and UNSUPPORTED examples.
-13. Read the v0.3 roadmap for planned next-phase work.
+10. Read the template usage guide.
+11. Run the demo validator.
+12. Inspect the scenario index.
+13. Review PASS, FAIL, and UNSUPPORTED examples.
+14. Read the v0.3 roadmap for planned next-phase work.
 ```
 
 Start here:
@@ -113,6 +116,7 @@ Start here:
 - [Review Handoff Model](./docs/aipa-governance/review-handoff-model.md)
 - [Policy Fingerprint Evolution](./docs/aipa-governance/policy-fingerprint-evolution.md)
 - [Reusable Governance Overlay Template](./docs/aipa-governance/reusable-overlay-template.md)
+- [Template Usage Guide](./docs/aipa-governance/template-usage-guide.md)
 - [v0.2 Roadmap](./docs/aipa-governance/v0.2-roadmap.md)
 - [v0.3 Roadmap](./docs/aipa-governance/v0.3-roadmap.md)
 - [Demo Walkthrough](./docs/aipa-governance/demo-walkthrough.md)
@@ -177,6 +181,10 @@ The v0.2 reusable overlay templates are located in:
 - [Runtime tool-use overlay template](./templates/aipa-governance/runtime-tool-use-overlay.template.json)
 - [Server install overlay template](./templates/aipa-governance/server-install-overlay.template.json)
 - [Review handoff package template](./templates/aipa-governance/review-handoff-package.template.json)
+
+To use these templates, read:
+
+- [Template Usage Guide](./docs/aipa-governance/template-usage-guide.md)
 
 ## Schemas
 
