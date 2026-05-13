@@ -39,6 +39,7 @@ Current milestone documents:
 - [Policy Fingerprint Evolution](./docs/aipa-governance/policy-fingerprint-evolution.md)
 - [Reusable Governance Overlay Template](./docs/aipa-governance/reusable-overlay-template.md)
 - [v0.2 Roadmap](./docs/aipa-governance/v0.2-roadmap.md)
+- [v0.3 Roadmap](./docs/aipa-governance/v0.3-roadmap.md)
 
 v0.1 demonstrates governance review packages across:
 
@@ -57,6 +58,16 @@ review handoff boundaries
 policy fingerprint consistency
 reusable governance overlay templates
 milestone alignment
+```
+
+v0.3 is planned to focus on:
+
+```text
+template instantiation
+validator hardening
+policy fingerprint examples
+review handoff indexing
+overlay reuse criteria
 ```
 
 ## AIPA governance overlay
@@ -86,6 +97,7 @@ Recommended reviewer path:
 10. Run the demo validator.
 11. Inspect the scenario index.
 12. Review PASS, FAIL, and UNSUPPORTED examples.
+13. Read the v0.3 roadmap for planned next-phase work.
 ```
 
 Start here:
@@ -102,6 +114,7 @@ Start here:
 - [Policy Fingerprint Evolution](./docs/aipa-governance/policy-fingerprint-evolution.md)
 - [Reusable Governance Overlay Template](./docs/aipa-governance/reusable-overlay-template.md)
 - [v0.2 Roadmap](./docs/aipa-governance/v0.2-roadmap.md)
+- [v0.3 Roadmap](./docs/aipa-governance/v0.3-roadmap.md)
 - [Demo Walkthrough](./docs/aipa-governance/demo-walkthrough.md)
 - [Artifact Flow](./docs/aipa-governance/artifact-flow.md)
 - [ToolHive-Style Governance Overlay Lifecycle](./docs/aipa-governance/toolhive-overlay-lifecycle.md)
@@ -224,6 +237,7 @@ This repository currently contains:
 ```text
 v0.1 stable research milestone
 v0.2 partner-reviewable research milestone
+v0.3 roadmap planning
 ```
 
 The current focus is:
@@ -237,6 +251,7 @@ validation semantics
 policy fingerprint consistency
 reusable governance overlay templates
 external review boundaries
+future template instantiation and validator hardening
 ```
 
 ## License
