@@ -34,6 +34,7 @@ Current milestone documents:
 - [v0.1 Demo Walkthrough](./docs/aipa-governance/v0.1-demo-walkthrough.md)
 - [Architecture Diagrams](./docs/aipa-governance/architecture-diagrams.md)
 - [Partner Review Package](./docs/aipa-governance/partner-review-package.md)
+- [Review Handoff Model](./docs/aipa-governance/review-handoff-model.md)
 - [v0.2 Roadmap](./docs/aipa-governance/v0.2-roadmap.md)
 
 v0.1 demonstrates governance review packages across:
@@ -49,7 +50,7 @@ v0.2 focuses on:
 ```text
 partner reviewability
 architecture clarity
-external verifier handoff
+review handoff boundaries
 policy fingerprint evolution
 reusable governance overlay patterns
 ```
@@ -72,10 +73,11 @@ Recommended reviewer path:
 2. Open the v0.1 demo walkthrough.
 3. Review the architecture diagrams.
 4. Read the partner review package.
-5. Run the demo validator.
-6. Inspect the scenario index.
-7. Review PASS, FAIL, and UNSUPPORTED examples.
-8. Read the v0.2 roadmap.
+5. Read the review handoff model.
+6. Run the demo validator.
+7. Inspect the scenario index.
+8. Review PASS, FAIL, and UNSUPPORTED examples.
+9. Read the v0.2 roadmap.
 ```
 
 Start here:
@@ -87,6 +89,7 @@ Start here:
 - [v0.1 Demo Walkthrough](./docs/aipa-governance/v0.1-demo-walkthrough.md)
 - [Architecture Diagrams](./docs/aipa-governance/architecture-diagrams.md)
 - [Partner Review Package](./docs/aipa-governance/partner-review-package.md)
+- [Review Handoff Model](./docs/aipa-governance/review-handoff-model.md)
 - [v0.2 Roadmap](./docs/aipa-governance/v0.2-roadmap.md)
 - [Demo Walkthrough](./docs/aipa-governance/demo-walkthrough.md)
 - [Artifact Flow](./docs/aipa-governance/artifact-flow.md)
@@ -139,6 +142,7 @@ It also includes:
 - [Tool approval policy block](./examples/aipa-governance/tool-approval-policy-block.json)
 - [Tool denial policy block](./examples/aipa-governance/tool-denial-policy-block.json)
 - [Tool escalation policy block](./examples/aipa-governance/tool-escalation-policy-block.json)
+- [Review handoff package example](./examples/aipa-governance/review-handoff-package.json)
 
 ## Schemas
 
@@ -207,7 +211,7 @@ scenario coverage
 partner-safe positioning
 reviewability
 validation semantics
-external verification boundaries
+external review boundaries
 ```
 
 ## License
