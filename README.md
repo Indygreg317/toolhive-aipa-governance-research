@@ -35,6 +35,7 @@ Current milestone documents:
 - [Architecture Diagrams](./docs/aipa-governance/architecture-diagrams.md)
 - [Partner Review Package](./docs/aipa-governance/partner-review-package.md)
 - [Review Handoff Model](./docs/aipa-governance/review-handoff-model.md)
+- [Policy Fingerprint Evolution](./docs/aipa-governance/policy-fingerprint-evolution.md)
 - [v0.2 Roadmap](./docs/aipa-governance/v0.2-roadmap.md)
 
 v0.1 demonstrates governance review packages across:
@@ -74,10 +75,11 @@ Recommended reviewer path:
 3. Review the architecture diagrams.
 4. Read the partner review package.
 5. Read the review handoff model.
-6. Run the demo validator.
-7. Inspect the scenario index.
-8. Review PASS, FAIL, and UNSUPPORTED examples.
-9. Read the v0.2 roadmap.
+6. Read the policy fingerprint evolution notes.
+7. Run the demo validator.
+8. Inspect the scenario index.
+9. Review PASS, FAIL, and UNSUPPORTED examples.
+10. Read the v0.2 roadmap.
 ```
 
 Start here:
@@ -90,6 +92,7 @@ Start here:
 - [Architecture Diagrams](./docs/aipa-governance/architecture-diagrams.md)
 - [Partner Review Package](./docs/aipa-governance/partner-review-package.md)
 - [Review Handoff Model](./docs/aipa-governance/review-handoff-model.md)
+- [Policy Fingerprint Evolution](./docs/aipa-governance/policy-fingerprint-evolution.md)
 - [v0.2 Roadmap](./docs/aipa-governance/v0.2-roadmap.md)
 - [Demo Walkthrough](./docs/aipa-governance/demo-walkthrough.md)
 - [Artifact Flow](./docs/aipa-governance/artifact-flow.md)
@@ -184,6 +187,8 @@ FAIL
 UNSUPPORTED
 ```
 
+In v0.2, the validator also checks review handoff packages for referenced artifact paths and policy fingerprint consistency across the handoff package.
+
 ## What this fork is not
 
 This fork is not:
@@ -200,7 +205,7 @@ This repository currently contains:
 
 ```text
 v0.1 stable research milestone
-v0.2 roadmap planning
+v0.2 policy fingerprint phase
 ```
 
 The current focus is:
@@ -211,6 +216,7 @@ scenario coverage
 partner-safe positioning
 reviewability
 validation semantics
+policy fingerprint consistency
 external review boundaries
 ```
 
