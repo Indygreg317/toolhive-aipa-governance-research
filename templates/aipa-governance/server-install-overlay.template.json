@@ -1,0 +1,81 @@
+{
+  "template_id": "aipa-server-install-overlay-template-001",
+  "artifact_type": "server_install_overlay_template",
+  "version": "0.1",
+  "scenario_type": "mcp_server_install_review",
+  "governed_server": {
+    "mcp_server_id": "placeholder-mcp-server-id",
+    "mcp_server_name": "Placeholder MCP Server",
+    "server_category": "filesystem | browser_search | database | other",
+    "risk_tier": "low | medium | high",
+    "requested_lifecycle_event": "install | expose | approve | deny | remove"
+  },
+  "policy_reference": {
+    "policy_id": "AIPA-MCP-PLACEHOLDER-001",
+    "policy_name": "Placeholder MCP Server Governance Policy",
+    "policy_fingerprint": "sha256:placeholder-policy-fingerprint"
+  },
+  "server_capability_summary": {
+    "declared_capabilities": [
+      "Describe declared server capabilities here."
+    ],
+    "sensitive_capabilities": [
+      "Describe sensitive capabilities here."
+    ],
+    "declared_limitations": [
+      "Describe known limitations here."
+    ]
+  },
+  "trust_context": {
+    "source_type": "public_repo | internal_repo | vendor_package | unknown",
+    "trust_status": "approved | denied | escalated | unsupported",
+    "review_required": true
+  },
+  "approval_conditions": [
+    "Server purpose is declared.",
+    "Sensitive capabilities are declared.",
+    "Policy fingerprint is present.",
+    "Human review is present for high-risk server capability."
+  ],
+  "denial_conditions": [
+    "Server purpose is unclear.",
+    "Sensitive capability scope is missing.",
+    "Policy fingerprint is missing.",
+    "Required human review is absent."
+  ],
+  "required_artifacts": [
+    "server-capability-block.json",
+    "server-trust-profile.json",
+    "install-request.json",
+    "approval-decision.json or denial-decision.json",
+    "install-governance-record.json",
+    "verification-boundary.map.json",
+    "audit-package-summary.json"
+  ],
+  "evidence_inputs": [
+    "server capability declaration",
+    "server trust profile",
+    "install request",
+    "approval or denial decision",
+    "policy reference",
+    "policy fingerprint",
+    "human review record when required"
+  ],
+  "reviewable_claims": [
+    "The server lifecycle event was identified.",
+    "The trust profile was declared.",
+    "The policy reference was declared.",
+    "The policy fingerprint was attached.",
+    "The approval or denial basis was recorded."
+  ],
+  "unsupported_claims": [
+    "No external registry verification is included by default.",
+    "No cryptographic package provenance is included by default.",
+    "No live runtime enforcement is claimed by this template."
+  ],
+  "expected_governance_outcome": "PASS | FAIL | UNSUPPORTED",
+  "validation_notes": {
+    "policy_fingerprint_rule": "Artifacts in the same install overlay package should use the same policy_fingerprint unless a policy transition is declared.",
+    "boundary_rule": "Claims outside the provided evidence package should remain UNSUPPORTED."
+  }
+}
