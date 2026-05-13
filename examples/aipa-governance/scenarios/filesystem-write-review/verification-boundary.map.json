@@ -22,6 +22,11 @@
     "The same policy fingerprint appears in the decision context, execution receipt, governance record, and verification boundary map.",
     "The target path remains inside the declared approved workspace path."
   ],
+  "unsupported_claims": [
+    "Live runtime replay is outside this scenario boundary.",
+    "Cryptographic proof of file contents is outside this scenario boundary.",
+    "External attestation is outside this scenario boundary."
+  ],
   "verification_outcomes": {
     "PASS": "Required artifacts are present and the declared governance context is internally consistent for MVP review.",
     "FAIL": "Required artifacts are missing, policy fingerprints are inconsistent, human review is missing for the write operation, or the target path falls outside the approved boundary.",

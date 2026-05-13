@@ -4,7 +4,7 @@ This directory contains a minimal validator for the AIPA MCP governance research
 
 The validator checks whether example governance artifacts contain the required MVP fields and whether their validation status uses the expected AIPA outcomes. It also supports scenario-folder validation for end-to-end demo packages.
 
-The current v0.1 validation manifest covers all six shipped scenario folders.
+The current validation manifest covers all shipped scenario folders and selected root artifacts.
 
 ## Outcome model
 
@@ -37,7 +37,7 @@ What should the review conclusion be?
 
 This matters because a structurally valid `FAIL` scenario should not break CI when `FAIL` is the expected governance outcome.
 
-Likewise, a structurally valid `UNSUPPORTED` scenario should not break CI when `UNSUPPORTED` is the expected governance outcome.
+Likewise, a structurally valid `UNSUPPORTED` scenario should not break CI when `UNSUPPORTED` is expected.
 
 ## What it checks
 
@@ -112,6 +112,17 @@ For MCP server install governance records, the validator checks that:
 - evidence_references are present
 - expected_reviewer_outcome is PASS, FAIL, or UNSUPPORTED
 
+### Review handoff packages
+
+For review handoff packages, the validator checks that:
+
+- required handoff fields are present
+- expected_governance_outcome is PASS, FAIL, or UNSUPPORTED
+- evidence_references are present
+- unsupported_claims is a list
+- referenced paths exist
+- policy fingerprints remain consistent across referenced artifacts when fingerprints are present
+
 ### Runtime tool-use scenario folders
 
 For runtime tool-use scenario folders, the validator checks that the folder contains:
@@ -126,12 +137,16 @@ For runtime tool-use scenario folders, the validator checks that the folder cont
 It also performs basic consistency checks:
 
 - request IDs match across request, decision context, and governance record
-- agent IDs remain consistent across scenario artifacts
-- policy fingerprints remain consistent across scenario artifacts
-- audit package tool identity matches the execution receipt
-- high-risk or write operations include human oversight
+- agent IDs remain consistent across request and execution receipt when both are present
+- mcp_server_id remains consistent across request, execution receipt, and governance record when present
+- policy fingerprints remain consistent across runtime scenario artifacts
+- high-risk runtime scenarios include human oversight in decision context and governance record
 - verification boundary maps include evidence inputs
+- verification boundary maps include unsupported claims
+- governance records with unsupported_claims use a non-empty list
 - audit package expected reviewer outcome is PASS, FAIL, or UNSUPPORTED
+- referenced repository paths exist in governance records and audit package summaries
+- optional review-handoff-package.json files validate when present
 
 ### MCP server install scenario folders
 
@@ -153,13 +168,25 @@ It also performs basic consistency checks:
 - policy fingerprints remain consistent across trust, decision, governance, boundary, and audit artifacts
 - high-risk server installs include human review
 - verification boundary maps include evidence inputs
+- verification boundary maps with unsupported_claims use a non-empty list
 - expected reviewer outcome is PASS, FAIL, or UNSUPPORTED
+- referenced repository paths exist in install governance records and audit package summaries
+- optional review-handoff-package.json files validate when present
 
 ### Unsupported verification boundary scenarios
 
 For unsupported verification boundary scenarios, the validator expects the artifact package to demonstrate that required evidence is outside the available review boundary.
 
 The governance outcome should be `UNSUPPORTED`, not `PASS` or `FAIL`.
+
+It also checks that:
+
+- policy fingerprints remain consistent across unsupported scenario artifacts
+- verification boundary maps include evidence inputs
+- verification boundary maps include unsupported claims
+- audit packages include unsupported_items
+- referenced repository paths exist in governance records and audit package summaries
+- optional review-handoff-package.json files validate when present
 
 ## Run the validator directly
 
@@ -207,6 +234,8 @@ examples/aipa-governance/validation-manifest.json
 
 It validates the manifest artifacts and all listed scenario folders, including expected `PASS`, `FAIL`, and `UNSUPPORTED` governance outcomes.
 
-## MVP limitation
+## Limitation
 
-This validator does not perform runtime enforcement, cryptographic verification, external attestation, or live MCP integration. It only validates the shape, required governance fields, and basic internal consistency of the MVP example artifacts and scenario packages.
+This validator does not perform runtime enforcement, cryptographic verification, external attestation, production compliance review, or live MCP integration.
+
+It only validates structure, required governance fields, reference consistency, evidence-bound review shape, and basic internal consistency of example artifacts and scenario packages.

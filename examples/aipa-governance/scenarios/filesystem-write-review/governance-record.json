@@ -26,6 +26,12 @@
     "user_role": "developer",
     "authority_scope": "approved_project_workspace_only"
   },
+  "human_review": {
+    "required": true,
+    "reviewer_id": "human-reviewer-placeholder",
+    "review_status": "approved",
+    "review_reason": "Filesystem write operation required human approval under the MVP governance policy."
+  },
   "oversight_record": {
     "required": true,
     "reviewer_id": "human-reviewer-placeholder",

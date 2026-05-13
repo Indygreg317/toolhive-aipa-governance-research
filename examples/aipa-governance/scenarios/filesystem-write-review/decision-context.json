@@ -27,6 +27,13 @@
     ],
     "path_boundary_decision": "inside_allowlist"
   },
+  "human_oversight": {
+    "required": true,
+    "review_role": "authorized_reviewer",
+    "review_status": "approved",
+    "reviewer_id": "human-reviewer-placeholder",
+    "requirement": "Filesystem write operation in a high-risk tool category."
+  },
   "oversight_decision": {
     "human_oversight_required": true,
     "reason": "Filesystem write operation in a high-risk tool category.",

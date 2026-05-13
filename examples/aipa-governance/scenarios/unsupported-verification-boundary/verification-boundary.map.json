@@ -23,6 +23,13 @@
     "source provenance record is required but not provided",
     "policy fingerprint cannot be resolved to a canonical policy artifact"
   ],
+  "unsupported_claims": [
+    "External attestation cannot be verified with available evidence.",
+    "Runtime replay cannot be verified with available evidence.",
+    "Dependency state cannot be verified with available evidence.",
+    "Source provenance cannot be verified with available evidence.",
+    "Canonical policy artifact resolution cannot be verified with available evidence."
+  ],
   "verification_outcomes": {
     "PASS": "Not available because required external evidence is missing from the current review boundary.",
     "FAIL": "Not asserted because the available evidence does not prove contradiction; it only fails to support the declared claims inside the current boundary.",
