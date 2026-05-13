@@ -172,6 +172,7 @@ It also includes:
 - [Tool denial policy block](./examples/aipa-governance/tool-denial-policy-block.json)
 - [Tool escalation policy block](./examples/aipa-governance/tool-escalation-policy-block.json)
 - [Review handoff package example](./examples/aipa-governance/review-handoff-package.json)
+- [Policy fingerprint example](./examples/aipa-governance/policy-fingerprint-example.json)
 
 ## Reusable templates
 
@@ -226,7 +227,7 @@ FAIL
 UNSUPPORTED
 ```
 
-In v0.2, the validator also checks review handoff packages for referenced artifact paths and policy fingerprint consistency across the handoff package.
+In v0.2 and v0.3, the validator also checks review handoff packages, scenario references, and policy fingerprint consistency across supported review packages.
 
 ## What this fork is not
 
